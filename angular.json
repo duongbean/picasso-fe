@@ -18,8 +18,8 @@
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "aot": true,  // ✅ Bật AOT Compilation để fix lỗi JIT Compiler
-            "vendorChunk": true, // ✅ Đảm bảo tách vendor files
+            "aot": true,
+            "vendorChunk": true,
             "outputHashing": "all",
             "extractCss": true,
             "optimization": true,
@@ -37,9 +37,9 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
-            "outputMode": "file",
+            "outputMode": "server",
             "ssr": {
-              "entry": "src/server.ts"
+              "entry": "src/main.server.ts"
             }
           },
           "configurations": {
@@ -57,7 +57,7 @@
                 }
               ],
               "outputHashing": "all",
-              "aot": true,  // ✅ Bật AOT Compilation cho production
+              "aot": true,
               "optimization": true,
               "extractCss": true,
               "sourceMap": false,
@@ -65,7 +65,7 @@
               "commonChunk": true
             },
             "development": {
-              "aot": true,  // ✅ Bật AOT Compilation cho development
+              "aot": true,
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -84,6 +84,32 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "all",
+              "optimization": true
+            },
+            "development": {
+              "optimization": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "picasso-fe:build:production",
+            "serverTarget": "picasso-fe:server:production",
+            "routes": ["/"]
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
