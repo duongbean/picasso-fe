@@ -31,9 +31,9 @@ export class LoginComponent {
   errorMessage: string | null = null; // Biến lưu thông báo lỗi
   loading: boolean = false;
   failedAttempts: number = 0; // Đếm số lần nhập sai
-  showCaptcha: boolean = false; // Kiểm soát hiển thị CAPTCHA
-  captchaCode: string = ''; // Mã CAPTCHA ngẫu nhiên
-  captchaError: string | null = null; // Thông báo lỗi CAPTCHA
+  // showCaptcha: boolean = false; // Kiểm soát hiển thị CAPTCHA
+  // captchaCode: string = ''; // Mã CAPTCHA ngẫu nhiên
+  // captchaError: string | null = null; // Thông báo lỗi CAPTCHA
   hidePassword: boolean = true;
 
   constructor(
@@ -48,7 +48,7 @@ export class LoginComponent {
         Validators.required,
         Validators.minLength(6),
       ]),
-      captchaInput: new FormControl(''), // Trường nhập CAPTCHA (chỉ kiểm tra khi cần)
+      // captchaInput: new FormControl(''), // Trường nhập CAPTCHA (chỉ kiểm tra khi cần)
     });
   }
 
@@ -60,10 +60,10 @@ export class LoginComponent {
   get password() {
     return this.loginForm.get('password');
   }
-  generateCaptcha() {
-    this.captchaCode = Math.random().toString(36).substring(2, 8).toUpperCase();
-    console.log(`🔄 CAPTCHA mới: ${this.captchaCode}`);
-  }
+  // generateCaptcha() {
+  //   this.captchaCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+  //   console.log(`🔄 CAPTCHA mới: ${this.captchaCode}`);
+  // }
 
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
@@ -74,18 +74,18 @@ export class LoginComponent {
     console.log(
       `🔍 Người dùng nhập CAPTCHA: ${this.loginForm.get('captchaInput')?.value}`
     );
-    console.log(`🎯 CAPTCHA thực tế: ${this.captchaCode}`);
+    // console.log(`🎯 CAPTCHA thực tế: ${this.captchaCode}`);
 
     // Kiểm tra CAPTCHA nếu đang hiển thị
-    if (this.showCaptcha) {
-      const enteredCaptcha = this.loginForm.get('captchaInput')?.value?.trim();
-      if (enteredCaptcha !== this.captchaCode.trim()) {
-        console.log('⚠ Lỗi CAPTCHA: Người dùng nhập sai!');
-        this.captchaError = 'Mã CAPTCHA không đúng. Vui lòng thử lại.';
-        this.generateCaptcha(); // Tạo CAPTCHA mới nếu nhập sai
-        return;
-      }
-    }
+    // if (this.showCaptcha) {
+    //   const enteredCaptcha = this.loginForm.get('captchaInput')?.value?.trim();
+    //   if (enteredCaptcha !== this.captchaCode.trim()) {
+    //     console.log('⚠ Lỗi CAPTCHA: Người dùng nhập sai!');
+    //     this.captchaError = 'Mã CAPTCHA không đúng. Vui lòng thử lại.';
+    //     this.generateCaptcha(); // Tạo CAPTCHA mới nếu nhập sai
+    //     return;
+    //   }
+    // }
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
       this.loading = true;
@@ -175,11 +175,11 @@ export class LoginComponent {
 
     this.failedAttempts++; // Tăng số lần nhập sai
 
-    if (this.failedAttempts >= 5) {
-      this.showCaptcha = true; // Bắt buộc nhập CAPTCHA sau 5 lần sai
-      this.generateCaptcha(); // Tạo CAPTCHA mới
-      console.log('🚨 Hiển thị CAPTCHA do nhập sai quá 5 lần!');
-    }
+    // if (this.failedAttempts >= 5) {
+    //   this.showCaptcha = true; // Bắt buộc nhập CAPTCHA sau 5 lần sai
+    //   this.generateCaptcha(); // Tạo CAPTCHA mới
+    //   console.log('🚨 Hiển thị CAPTCHA do nhập sai quá 5 lần!');
+    // }
 
     console.log(errorMessage);
     switch (errorMessage) {

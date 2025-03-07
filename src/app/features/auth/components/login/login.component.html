@@ -47,16 +47,7 @@
                         {{ password?.hasError('minlength') ? 'Mật khẩu phải có ít nhất 6 ký tự.' : '' }}
                     </span> -->
                     </div>
-                    <div *ngIf="showCaptcha">
-                        <label class="input-label">Nhập mã CAPTCHA</label>
-                        <div class="captcha-box">
-                            <span class="captcha-code">{{ captchaCode }}</span>
-                            <input type="text" formControlName="captchaInput" placeholder="Nhập mã trên" required />
 
-                        </div>
-                        <span *ngIf="captchaError" class="error-message">{{ captchaError }}</span>
-
-                    </div>
 
                     <a class="forgot-password-link" [routerLink]="'/forgot-password'"
                         style="color: black; text-decoration: none; font-family: 'LeagueSpartan-Bold', sans-serif;">
