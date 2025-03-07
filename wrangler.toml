@@ -5,4 +5,5 @@ account_id = "4d6ae1b278be4d159deb9e18974b2cc9"
 workers_dev = true
 route = ""
 zone_id = ""
-main = "dist/index.js"  # Hoặc src/index.ts nếu bạn chưa build
+main = "src/main.ts"
+
