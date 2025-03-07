@@ -4,9 +4,16 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": [
-      "node"
-    ]
+    "types": ["node"],
+    "strict": true, 
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true,
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   },
   "files": [
     "src/main.ts",
@@ -17,3 +24,4 @@
     "src/**/*.d.ts"
   ]
 }
+
