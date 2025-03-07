@@ -11,6 +11,23 @@
 
     <!-- Hàng công cụ -->
     <div class="toolbar">
+        <!-- Bên trái -->
+        <div class="left">
+            <div class="icon-badge">
+                <span class="material-icons">photo_library</span> 5
+            </div>
+            <div class="text-icon">
+                <span class="material-icons">star_border</span> 0
+            </div>
+            <div class="text-icon">
+                <span class="material-icons">favorite_border</span> 0
+            </div>
+            <div class="text-icon">
+                <span class="material-icons">chat_bubble_outline</span> 0
+            </div>
+        </div>
+
+        <!-- Bên phải -->
         <div class="right">
 
             <button class="circle-btn" (click)="reloadAlbum()">
@@ -35,12 +52,15 @@
         </div>
     </div>
 
-    <!-- Hiển thị ảnh từ Drive -->
-    <!-- Kiểm tra danh sách ảnh có tồn tại không -->
-    <div *ngIf="images && images.length > 0;" class="images-container">
+    <!-- Thanh tab -->
+    <div class="tabs">
+        <button class="tab active">Tất cả</button>
+    </div>
 
+    <!-- Hiển thị ảnh từ Drive -->
+    <div *ngIf="images && images.length > 0;" class="images-container">
         <div class="image-item" *ngFor="let img of images">
-            <img [src]="img.filePath" alt="Drive Image" (load)="onImageLoad($event)" />
+            <img [src]="img.filePath" alt="Drive Image" />
 
             <div class="recommend-container" [ngClass]="{'is-recommended': img.isRecommend}"
                 (click)="addRecommedPhoto(img.id, img.isRecommend, img)">
@@ -62,10 +82,7 @@
 
 
         </div>
-
-
     </div>
-
 
     <!-- Spinner hiển thị khi đang tải ảnh -->
     <div *ngIf="isLoading" class="loading-spinner">
