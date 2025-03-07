@@ -1,0 +1,38 @@
+<mat-dialog-actions class="dialog-action-container">
+    <button class="edit-dialog-btn position-relative"
+        (click)="onEditProject(project)"><mat-icon>edit</mat-icon></button>
+    <button class="delete-dialog-btn position-relative margin-right-3"
+        (click)="onDeleteProject(project)"><mat-icon>delete</mat-icon></button>
+    <button class="close-dialog-btn position-relative" mat-dialog-close><mat-icon>cancel</mat-icon></button>
+</mat-dialog-actions>
+
+<mat-dialog-content class="dialog-content-container">
+    <div class="project-name-container d-flex">
+        <div class="project-status"></div>
+        <div class="name-and-date d-flex flex-column">
+            <h2 class="project-name">{{ project.projectInfo.name }}</h2>
+            <p>{{ formatDateByViForm(project.projectInfo.startTime)}}</p>
+
+        </div>
+    </div>
+    <div class="customer-container d-flex align-items-center">
+        <mat-icon>person</mat-icon>
+        <span>{{project.customer.lastName + ' ' + project.customer.middleName + ' ' + project.customer.firstName + ' -
+            ('
+            + project.customerEmail + ')'}}</span>
+    </div>
+    <div class="customer-container d-flex align-items-center">
+        <mat-icon>business_center</mat-icon>
+        <span>{{project.photographer.lastName + ' ' + project.photographer.middleName + ' ' +
+            project.photographer.firstName + ' -
+            ('
+            + project.photographerEmail + ')'}}</span>
+    </div>
+    <div class="customer-container d-flex align-items-center last-content">
+        <mat-icon>edit_calendar</mat-icon>
+        <span>{{project.saler.lastName + ' ' + project.saler.middleName + ' ' + project.saler.firstName + '
+            -
+            ('
+            + project.salerEmail + ')'}}</span>
+    </div>
+</mat-dialog-content>

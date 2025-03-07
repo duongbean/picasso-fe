@@ -1,0 +1,16 @@
+<div class="admin-layout">
+    <!-- Sidebar -->
+    <app-navbar></app-navbar>
+    <app-sidebar class="sidebar"></app-sidebar>
+
+    <!-- Nội dung chính và footer -->
+    <div class="main-content">
+        <div class="admin-content">
+            <router-outlet></router-outlet>
+            <!-- 🔥 Nội dung động -->
+        </div>
+
+        <!-- Footer sẽ luôn ở dưới cùng -->
+        <app-footer class="admin-footer"></app-footer>
+    </div>
+</div>

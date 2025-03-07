@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    font-family: 'LeagueSpartan-Regular', sans-serif !important;
+    box-sizing: border-box;
+    background-color: var(--bg-page-color) !important;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('/assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('/assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Regular';
+    src: url('/assets/fonts/LeagueSpartan-Regular.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Medium';
+    src: url('/assets/fonts/LeagueSpartan-Medium.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('/assets/fonts/LeagueSpartan-Bold.ttf') format('woff2'), url('/assets/fonts/LeagueSpartan-Light.ttf') format('woff'), url('/assets/fonts/LeagueSpartan-Bold.ttf') format('truetype'), url('/assets/fonts/LeagueSpartan-Light.ttf') format('woff2'), url('/assets/fonts/LeagueSpartan-Light.ttf') format('woff'), url('/assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.cdk-overlay-container {
+    z-index: 10000 !important;
+}
+
+.cdk-overlay-pane {
+    z-index: 10001 !important;
+    margin: 5px 0;
+    border-radius: 16px;
+    background: #FFF !important;
+}
+
+
+/* ✅ Popup Swal đồng bộ */
+
+.swal-popup-custom {
+    width: 420px !important;
+    padding: 20px !important;
+    border-radius: 10px !important;
+}
+
+
+/* ✅ Tiêu đề Swal lớn hơn và đậm */
+
+.swal-title-custom {
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+}
+
+
+/* ✅ Nút Đăng xuất (Màu Đỏ) */
+
+.swal-confirm-red {
+    background-color: #d33 !important;
+    color: white !important;
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+    border-radius: 6px !important;
+    width: 160px;
+}
+
+.swal-confirm-red:hover {
+    background-color: #b52b2b !important;
+}
+
+.swal2-container {
+    z-index: 9999 !important;
+    /* Đặt cao hơn MatDialog */
+}
+
+
+/* ✅ Nút Thành công (Màu Xanh) */
+
+.swal-confirm-green {
+    background-color: #28a745 !important;
+    color: white !important;
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+    border-radius: 6px !important;
+    width: 160px;
+}
+
+.swal-confirm-green:hover {
+    background-color: #218838 !important;
+}
+
+
+/* ✅ Nút Cảnh báo (Màu Vàng) */
+
+.swal-confirm-yellow {
+    background-color: #ffc107 !important;
+    color: black !important;
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+    border-radius: 6px !important;
+    width: 160px;
+}
+
+.swal-confirm-yellow:hover {
+    background-color: #e0a800 !important;
+}
+
+
+/* ✅ Nút Hủy (Màu Trắng) */
+
+.swal-cancel-white {
+    background-color: white !important;
+    color: black !important;
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ddd !important;
+    width: 160px;
+}
+
+.swal-cancel-white:hover {
+    background-color: #f8f9fa !important;
+}
+
+
+/* Đối với Webkit (Chrome, Safari) */
+
+::-webkit-scrollbar {
+    width: 4px;
+    /* Chiều rộng thanh cuộn dọc */
+    height: 4px;
+    /* Chiều cao thanh cuộn ngang */
+}
+
+
+/* Màu nền của scrollbar */
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+
+/* Màu của thanh cuộn */
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    /* Màu tối nhẹ */
+    border-radius: 10px;
+}
+
+
+/* Khi hover vào scrollbar */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Đối với Firefox */
+
+* {
+    scrollbar-width: thin;
+    /* Làm mỏng thanh cuộn */
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+
+/* .custom-backdrop {
+    background: rgba(0, 0, 0, 0.7) !important;
+} */
+
+.custom-dialog {
+    min-width: 600px !important;
+    max-width: 90vw !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    z-index: 9998 !important;
+}
+
+.swal2-toast {
+    z-index: 999999 !important;
+}

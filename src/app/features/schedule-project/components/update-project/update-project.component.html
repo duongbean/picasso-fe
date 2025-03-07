@@ -1,0 +1,136 @@
+<div class="create-project-container row">
+    <div class="back-btn-custom d-flex align-content-center" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Chỉnh sửa lịch chụp</span>
+    </div>
+
+
+    <div class="row create-project-form-container">
+        <form [formGroup]="updateProjectForm" class="create-project-form position-relative">
+
+            <!-- Email customer input - start -->
+            <div class="create-project-input-container mt-1">
+                <span class="input-label">Khách hàng*</span><br>
+                <input formControlName="selectedCustomerNameAndEmail" #customerEmailInput
+                    class="input-field email-input-field form-control mt-1" type="text"
+                    placeholder="Nhập email, tên hoặc số điện thoại của khách hàng">
+            </div>
+            <!-- Email customer input - end -->
+
+
+
+
+            <!-- Name project input - start -->
+            <div class="create-project-input-container mt-4">
+                <span class="input-label">Tên buổi chụp*</span><br>
+                <input formControlName="name" class="input-field form-control mt-1" type="text"
+                    placeholder="Nhập tên buổi chụp">
+            </div>
+            <!-- Name project input - end -->
+
+
+            <!-- Time Select - start -->
+            <div class="create-project-input-container mt-4">
+                <span class="input-label">Thời gian</span><br>
+                <div class="date-time-containter d-flex">
+                    <div class="date-field">
+                        <mat-form-field class="current-date-form-field">
+                            <div class="custom-datepicker-container" (click)="datepicker.open()">
+                                <input [min]="minDate" formControlName="currentDate" matInput
+                                    [matDatepicker]="datepicker" />
+                            </div>
+                            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #datepicker panelClass="custom-datepicker">
+                                <mat-datepicker-actions>
+                                    <button mat-button matDatepickerCancel>Hủy</button>
+                                    <button mat-raised-button matDatepickerApply>Chọn</button>
+                                </mat-datepicker-actions>
+                            </mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="start-time-field d-flex align-items-center">
+                        <mat-form-field>
+                            <mat-label>
+                                Bắt đầu</mat-label>
+                            <mat-select formControlName="selectedStartSlotTimeId">
+                                <ng-container *ngFor="let time of mainSlotTimes">
+                                    <mat-option [value]="time.id">
+                                        {{ time.time }}
+                                    </mat-option>
+                                </ng-container>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="end-time-field d-flex align-items-center">
+                        <mat-form-field>
+                            <mat-label>
+                                Kết thúc</mat-label>
+                            <mat-select formControlName="selectedEndSlotTimeId">
+                                <mat-option *ngFor="let time of endSlotTimes" [value]="time.id">
+                                    {{ time.time }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Time Select - end -->
+
+            <!-- Photographer Select - start -->
+            <div class="create-project-input-container mt-2">
+                <span class="input-label">Nhiếp ảnh gia</span><br>
+                <mat-form-field>
+                    <mat-icon matPrefix style="color: var(--primary-color);">person</mat-icon>
+                    <mat-label>
+                        Nhiếp ảnh gia
+                    </mat-label>
+                    <mat-select formControlName="selectedPhotographerId">
+                        <mat-option *ngFor="let photographer of photographers" [value]="photographer.id">
+                            <span class="font-weight-bold">{{photographer.lastName + ' ' + photographer.middleName + ' '
+                                + photographer.firstName}}</span>
+                            <span>{{' (' + photographer.email + ')'}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- Photographer Select - end -->
+
+            <!-- Room Select - start -->
+            <div class="create-project-input-container mt-3">
+                <span class="input-label">Vị trí chụp</span><br>
+                <mat-form-field>
+                    <mat-icon matPrefix style="color: var(--primary-color);">location_on</mat-icon>
+                    <mat-label>
+                        Khu vực</mat-label>
+                    <mat-select formControlName="selectedRoomId">
+                        <mat-option *ngFor="let room of rooms" [value]="room.id">
+                            {{ room.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- Room Select - end -->
+
+
+
+            <!-- Buttons site - start -->
+            <div class=" d-flex justify-content-center mt-2 column-gap-4">
+                <button class="btn-submit-global btn-submit-otp p-1 width-20"
+                    (click)="submitUpdateProject()">Lưu</button>
+                <div class=" btn-summit-otp-gap "></div>
+                <button class="btn-cancel-global btn-submit-otp p-1 width-20"
+                    (click)="cancelUpdateProject()">Hủy</button>
+            </div>
+            <!-- Buttons site - end -->
+
+            <div class="btn-submit-blur"></div>
+        </form>
+
+    </div>
+
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+</div>

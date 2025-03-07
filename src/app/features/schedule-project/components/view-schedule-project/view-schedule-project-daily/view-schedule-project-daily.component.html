@@ -1,0 +1,40 @@
+<table #scheduleTable class="schedule-table-container">
+    <thead>
+        <tr>
+            <th #currentDateTitle class="current-date-title">
+                <mat-icon class="arrow-left" (click)="changeCurrentDate(-1)">chevron_left</mat-icon>
+                {{ formattedCurrentDate }}
+                <mat-icon class="arrow-right" (click)="changeCurrentDate(1)">chevron_right</mat-icon>
+            </th>
+            <th class="time-slot-title" *ngFor="let time of timeSlots">{{ time.time }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let room of rooms">
+            <td class="stage-title">{{ room.name }}</td>
+            <!-- Hiển thị project bên trong table -->
+            <!-- <td *ngFor="let time of timeSlots" class="schedule-cell" #slotCell [ngClass]="{'no-hover': hasStartCell(projects, time, room.id), 'is-blocked': isTimeBlockedWithCurrentDate(time.time, this.currentDate)}" (click)="createProject(time, room)"> -->
+            <td *ngFor="let time of timeSlots" class="schedule-cell" #slotCell
+                [ngClass]="{'hover-opacity-1': hasStartCell(projects, time, room.id), 'is-blocked': isTimeBlockedWithCurrentDate(time.time, this.currentDate) && !hasStartCell(projects, time, room.id), 'background-grey': isTimeBlockedWithCurrentDate(time.time, this.currentDate)}"
+                (click)="onTdClick($event, time, room)">
+                <ng-container *ngFor="let project of projects">
+                    <div *ngIf="isProjectStart(project, time) && project.projectInfo.roomID === room.id"
+                        class="project-card"
+                        [ngClass]="{'start-cell': isProjectStart(project, time) && project.projectInfo.roomID === room.id}"
+                        [style.width.px]="calculateWidth(project)" [style.background-color]="getProjectStatus(project)">
+                        <span class="project-name">{{ project.projectInfo.name }}</span><br>
+                        <span>Nhiếp ảnh gia: {{ project.photographer.lastName + ' ' + project.photographer.middleName +
+                            ' ' +
+                            project.photographer.firstName}}</span>
+                        <span>Khách: {{ project.customer.lastName + ' ' + project.customer.middleName + ' ' +
+                            project.customer.firstName}}</span>
+                        <div class="middle">
+                            <div class="text" (click)="openEventDialog($event, project)">Xem chi tiết</div>
+                        </div>
+                    </div>
+
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</table>

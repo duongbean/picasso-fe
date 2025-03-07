@@ -1,0 +1,21 @@
+<div class="sidebar" style="padding-top: 27px;">
+    <button class="sidebar-item" [class.active]="activeItem === 'dashboard'" routerLink="/dashboard">
+        <mat-icon class="red-icon">dashboard</mat-icon>
+        <span class="sidebar-text">Dashboard</span>
+    </button>
+
+    <button class="sidebar-item" [class.active]="activeItem === 'calendar'" routerLink="/view-schedule">
+        <mat-icon class="red-icon">calendar_today</mat-icon>
+        <span class="sidebar-text">Quản lí lịch</span>
+    </button>
+
+    <button class="sidebar-item" [class.active]="activeItem === 'view-customer'" routerLink="/view-customer">
+        <mat-icon class="red-icon">group</mat-icon>
+        <span class="sidebar-text">Quản lí khách hàng</span>
+    </button>
+
+    <button class="sidebar-item" [class.active]="activeItem === 'view-user'" routerLink="/view-user">
+        <mat-icon class="red-icon">account_box</mat-icon>
+        <span class="sidebar-text">Quản lí nhân viên</span>
+    </button>
+</div>

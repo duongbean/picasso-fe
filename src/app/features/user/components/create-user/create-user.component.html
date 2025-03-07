@@ -1,0 +1,122 @@
+<div class="container d-flex justify-content-center align-items-center">
+    <div *ngIf="isLoading" class="loading-overlay">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="col-md-8">
+        <div class="card p-4 shadow-lg border-0 rounded-4">
+            <p class="title">Tạo tài khoản</p>
+
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+                <!-- Họ & Tên riêng -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-label">Họ*</div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <input matInput type="text" formControlName="lastName" placeholder="Nhập họ ">
+                            <mat-error *ngIf="userForm.controls['lastName'].hasError('required')">
+                                Họ không được để trống.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['lastName'].hasError('extraSpaces')">
+                                Không được có khoảng trắng ở đầu hoặc cuối.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['lastName'].hasError('multipleSpaces')">
+                                Không được có hơn một khoảng trắng giữa các từ.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['lastName'].hasError('maxLength')">
+                                Tên không được dài quá 20 ký tự.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['lastName'].hasError('invalidCapitalization')">
+                                Chữ cái đầu phải viết hoa, chữ cái sau phải viết thường.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-label">Tên đệm</div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <input matInput type="text" formControlName="middleName" placeholder="Nhập tên đệm">
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <!-- Tên đệm & Email -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="input-label">Tên riêng*</div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <input matInput type="text" formControlName="firstName" placeholder="Nhập tên riêng">
+                            <mat-error *ngIf="userForm.controls['firstName'].hasError('required')">
+                                Tên không được để trống.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['firstName'].hasError('extraSpaces')">
+                                Không được có khoảng trắng ở đầu hoặc cuối.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['firstName'].hasError('multipleSpaces')">
+                                Không được có hơn một khoảng trắng giữa các từ.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['firstName'].hasError('maxLength')">
+                                Tên không được dài quá 20 ký tự.
+                            </mat-error>
+                            <mat-error *ngIf="userForm.controls['firstName'].hasError('invalidCapitalization')">
+                                Chữ cái đầu phải viết hoa, chữ cái sau phải viết thường.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-label">Địa chỉ Email*</div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <input matInput type="email" formControlName="email" placeholder="Nhập email">
+                            <mat-error *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
+                                Vui lòng nhập email hợp lệ.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Giới tính & Vai trò -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="input-label">Giới tính*</div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-select formControlName="gender">
+                                <mat-option [value]="1">Nam</mat-option>
+                                <mat-option [value]="2">Nữ</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-label">Vai trò*</div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-select formControlName="roleName" [disabled]="isLoading">
+                                <mat-option *ngFor="let role of roles" [value]="role">
+                                    {{ role }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Nút Submit & Hủy bỏ -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-custom w-100 p-2 fw-bold shadow" [disabled]="userForm.invalid">
+                            <mat-icon class="me-2" style="margin-bottom: -6px;">person_add</mat-icon> 
+                            Tạo tài khoản
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-cancel btn-secondary w-100 p-2" (click)="goBack()" [disabled]="isLoading">
+                            <mat-icon class="me-2" style="margin-bottom: -6px;">cancel</mat-icon>
+                            <span *ngIf="!isLoading">Hủy bỏ</span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

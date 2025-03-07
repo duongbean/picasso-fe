@@ -1,0 +1,52 @@
+.admin-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Chiếm toàn bộ màn hình */
+    background-color: #F4EBE4;
+}
+
+
+/* 📌 Sidebar cố định bên trái */
+
+.sidebar {
+    position: fixed;
+    top: 56px;
+    /* Tránh che header */
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 📌 Phần nội dung sẽ chiếm phần còn lại */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Chiếm phần còn lại của màn hình */
+    margin-left: 250px;
+    /* Đẩy nội dung tránh sidebar */
+}
+
+
+/* 📌 Nội dung chính mở rộng tối đa để đẩy footer xuống */
+
+.admin-content {
+    flex: 1;
+    /* Đẩy footer xuống khi nội dung ít */
+    overflow-y: auto;
+}
+
+
+/* 📌 Footer luôn ở dưới cùng */
+
+.admin-footer {
+    width: 100%;
+    color: white;
+    text-align: center;
+}

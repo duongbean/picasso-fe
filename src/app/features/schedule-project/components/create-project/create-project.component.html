@@ -1,0 +1,217 @@
+<div class="create-project-container row">
+    <div class="back-btn-custom d-flex align-content-center" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Tạo mới lịch chụp</span>
+    </div>
+
+
+    <div class="row create-project-form-container">
+        <form [formGroup]="createProjectForm" class="create-project-form position-relative">
+
+            <!-- Email customer input - start -->
+            <div class="create-project-input-container mt-1">
+                <span class="input-label">Khách hàng*</span><br>
+                <input formControlName="selectedCustomer" #customerEmailInput
+                    class="input-field email-input-field form-control mt-1" [formControl]="customerEmailControl"
+                    type="text" placeholder="Nhập email, tên hoặc số điện thoại của khách hàng"
+                    (click)="customerSelectDisplay()" [ngClass]="{'show-input-email': isVisible}"
+                    (input)="onInputChange()">
+            </div>
+            <!-- Email customer input - end -->
+            <!-- Email customer - Validation -->
+            <div class=""
+                *ngIf="createProjectForm.get('selectedCustomer')?.dirty || createProjectForm.get('selectedCustomer')?.touched || isOnSubmit">
+                <div class="text-error" *ngIf="createProjectForm.get('selectedCustomer')?.hasError('required')">
+                    Vui lòng chọn khách hàng!
+                </div>
+
+            </div>
+
+            <!-- Selected customer Div - start -->
+            <div class="customer-selected-container" #selectedCustomerContainer>
+                <mat-icon class="">account_circle</mat-icon>
+                <div class="p-0 d-flex">
+                    <span *ngIf="selectedCustomer" class="email-span d-block opacity-50 ml-3">
+                        {{selectedCustomer.email}}
+                        <mat-icon class="close-icon" (click)="closeSelectedCustomer()">cancel</mat-icon>
+
+                    </span>
+                </div>
+            </div>
+            <!-- Selected customer Div - end -->
+
+            <!-- Exist customer Select - start -->
+            <div class="customer-select-container" #customerSelectContainer
+                [ngClass]="{'show': isVisible, 'hide': !isVisible}">
+                <div class="add-customer-container d-flex align-items-center gap-2" (click)="openDialog()">
+                    <mat-icon>add_circle</mat-icon>
+                    <span class="font-weight-bold">
+                        Liên hệ mới (Thêm khách hàng)
+                    </span>
+                </div>
+                <div *ngFor="let customer of filteredCustomers"
+                    class="option-customer-item-container d-flex align-items-center gap-2"
+                    (click)="customerSelect(customer)">
+                    <mat-icon>account_circle</mat-icon>
+                    <div class="p-0">
+                        <span class="d-block font-weight-bold">{{customer.name}} - {{customer.phoneNumber}}</span>
+                        <span class="d-block opacity-50 mt-minus-5">
+                            {{customer.email}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Exist customer Select - end -->
+
+            <!-- Name project input - start -->
+            <div class="create-project-input-container mt-4">
+                <span class="input-label">Tên buổi chụp*</span><br>
+                <input class="input-field form-control mt-1" formControlName="name" type="text"
+                    placeholder="Nhập tên buổi chụp">
+            </div>
+            <!-- Name project input - end -->
+
+            <!-- Name project - Validation -->
+            <div class=""
+                *ngIf="createProjectForm.get('name')?.dirty || createProjectForm.get('name')?.touched || isOnSubmit">
+                <div class="text-error" *ngIf="createProjectForm.get('name')?.hasError('required')">
+                    Vui lòng nhập tên buổi chụp!
+                </div>
+                <div class="text-error" *ngIf="createProjectForm.get('name')?.hasError('invalidString')">
+                    Vui lòng nhập tên có ý nghĩa!
+                </div>
+            </div>
+
+
+            <!-- Time Select - start -->
+            <div class="create-project-input-container mt-4">
+                <span class="input-label">Thời gian</span><br>
+                <div class="date-time-containter d-flex">
+                    <div class="date-field">
+                        <mat-form-field class="current-date-form-field">
+                            <div class="custom-datepicker-container" (click)="datepicker.open()">
+                                <input matInput [min]="minDate" [matDatepicker]="datepicker"
+                                    formControlName="currentDate" (dateChange)="onCurrentDateChange($event)" />
+                            </div>
+                            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #datepicker panelClass="custom-datepicker">
+                                <mat-datepicker-actions>
+                                    <button mat-button matDatepickerCancel>Hủy</button>
+                                    <button mat-raised-button matDatepickerApply>Chọn</button>
+                                </mat-datepicker-actions>
+                            </mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="start-time-field d-flex align-items-center">
+                        <mat-form-field>
+                            <mat-label>
+                                Bắt đầu</mat-label>
+                            <mat-select formControlName="selectedStartSlotTimeId"
+                                (selectionChange)="OnStartTimeChange($event)">
+                                <ng-container *ngFor="let time of slotTimes">
+                                    <mat-option [value]="time.id"
+                                        *ngIf="!isTimeBlockedWithCurrentDate(time.time, this.currentDate)">
+                                        {{ time.time }}
+                                    </mat-option>
+                                </ng-container>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="end-time-field d-flex align-items-center">
+                        <mat-form-field>
+                            <mat-label>
+                                Kết thúc</mat-label>
+                            <mat-select formControlName="selectedEndSlotTimeId"
+                                (selectionChange)="OnEndTimeChange($event)">
+                                <mat-option *ngFor="let time of filteredEndSlotTimes" [value]="time.id">
+                                    {{ time.time }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <!-- Time Select - end -->
+
+
+            <!-- Photographer Select - start -->
+            <div class="create-project-input-container mt-2">
+                <span class="input-label">Nhiếp ảnh gia</span><br>
+                <mat-form-field>
+                    <mat-icon matPrefix style="color: var(--primary-color);">person</mat-icon>
+                    <mat-label *ngIf="!selectedPhotographer || selectedPhotographer === ''">
+                        Nhiếp ảnh gia
+                    </mat-label>
+                    <mat-select formControlName="selectedPhotographer">
+                        <mat-option *ngFor="let photographer of photographers" [value]="photographer.id">
+                            <span class="font-weight-bold">{{ photographer.username }}</span>
+                            <span>{{' (' + photographer.email + ')' }}</span>
+
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- Photographer Select - end -->
+
+            <!-- Photographer Select - Validation -->
+            <div class="margin-top-minus-4" *ngIf="isOnSubmit">
+                <div class="text-error" *ngIf="createProjectForm.get('selectedPhotographer')?.hasError('required')">
+                    Vui lòng chọn nhiếp ảnh gia!
+                </div>
+            </div>
+
+
+            <!-- Room Select - start -->
+            <div class="create-project-input-container mt-4">
+                <span class="input-label">Vị trí chụp</span><br>
+                <mat-form-field>
+                    <mat-icon matPrefix style="color: var(--primary-color);">location_on</mat-icon>
+                    <mat-label *ngIf="!selectedRoomId || selectedRoomId === ''">
+                        Khu vực</mat-label>
+                    <mat-select formControlName="selectedRoomId">
+                        <mat-option *ngFor="let room of rooms" [value]="room.id">
+                            {{ room.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- Room Select - end -->
+            <!-- Room Select - Validation -->
+            <div class="margin-top-minus-2" *ngIf="isOnSubmit">
+                <div class="text-error" *ngIf="createProjectForm.get('selectedRoomId')?.hasError('required')">
+                    Vui lòng chọn vị trí chụp!
+                </div>
+            </div>
+
+            <!-- <div class="create-project-input-container mt-2">
+                <span class="input-label">Loại hình</span><br>
+                <mat-form-field>
+                    <mat-icon matPrefix style="color: var(--primary-color);">category</mat-icon>
+                    <mat-label class="visible-disappear">
+                        Loại hình</mat-label>
+                    <mat-select formControlName="selectedType">
+                        <mat-option *ngFor="let type of types" [value]="type.id">
+                            {{ type.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+
+            <!-- Buttons site - start -->
+            <div class=" d-flex justify-content-center mt-2 column-gap-4">
+                <button class="btn-submit-global btn-submit-otp p-1 width-20"
+                    (click)="confirmCreateProject()">Lưu</button>
+                <div class=" btn-summit-otp-gap "></div>
+                <button class="btn-cancel-global btn-submit-otp p-1 width-20" (click)="confirmCancel()">Hủy</button>
+            </div>
+            <!-- Buttons site - end -->
+
+            <div class="btn-submit-blur"></div>
+        </form>
+
+    </div>
+
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+</div>

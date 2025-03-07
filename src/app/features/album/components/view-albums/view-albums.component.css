@@ -1,0 +1,234 @@
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:host {
+    display: block;
+    font-family: 'LeagueSpartan-Bold';
+    font-weight: normal;
+    font-size: 16px;
+    color: #930C0F;
+}
+
+::ng-deep .custom-menu {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.album-container {
+    padding: 20px;
+}
+
+.album-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 14px 0px;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    border: 1px solid #ccc;
+    padding: 8px 30px 8px 10px;
+    border-radius: 5px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    color: gray;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: auto 3%;
+}
+
+.album-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.album-card {
+    position: relative;
+    width: 100%;
+    /* Hoặc điều chỉnh kích thước phù hợp */
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+}
+
+p {
+    display: block;
+}
+
+
+/* ✅ Gradient tối dần xuống dưới */
+
+.album-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgb(83 77 77 / 80%), rgb(113 107 107 / 40%), rgba(0, 0, 0, 0));
+    color: white;
+    /* ✅ Chữ màu trắng */
+    text-align: left;
+    z-index: 1;
+    padding-top: 62%;
+}
+
+
+/* Ảnh nền hiển thị đầy đủ trong card */
+
+.album-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ✅ Hiển thị chữ rõ ràng hơn */
+
+.album-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.album-date {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    /* ✅ Màu trắng hơi trong suốt */
+}
+
+
+/* ✅ Icon và số lượng */
+
+.album-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.album-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.like-icon {
+    color: #FFFF;
+    cursor: pointer;
+}
+
+.comment-icon {
+    color: #FFFF;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.create-album {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #930C0F;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.create-album:hover {
+    border-color: #0056b3;
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.create-album mat-icon {
+    font-size: 26px;
+}
+
+.create-album span {
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.album-info p {
+    margin: 0;
+    /* Loại bỏ margin mặc định */
+    padding: 0;
+    /* Loại bỏ padding mặc định */
+    font-size: 12px;
+    /* Chỉ định kích thước chữ nếu cần */
+    color: #FFF;
+    /* Màu chữ nhẹ */
+}
+
+.loading-overlay {
+    position: fixed;
+    /* Cố định trên toàn bộ trang */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Chiều rộng toàn màn hình */
+    height: 100vh;
+    /* Chiều cao toàn màn hình */
+    background: rgba(255, 255, 255, 0.8);
+    /* Nền mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Đặt trên tất cả các phần tử khác */
+}
+
+
+/* Spinner (vòng quay tải) */
+
+.spinner {
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

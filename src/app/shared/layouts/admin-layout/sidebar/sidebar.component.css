@@ -1,0 +1,126 @@
+/* Import Fonts */
+
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+}
+
+
+/* Reset toàn bộ margin & padding để tránh tràn */
+
+:host {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "LeagueSpartan-Bold";
+}
+
+
+/* Đảm bảo trang không bị cuộn khi không cần thiết */
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    /* Ngăn cuộn trang khi không có nội dung dư thừa */
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+    font-size: 20px;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 56px);
+    /* Giữ sidebar vừa đúng chiều cao */
+    overflow-y: auto;
+    /* Chỉ cho phép cuộn khi cần */
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Sidebar items */
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: #b22222;
+    background-color: white;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    text-align: left;
+}
+
+
+/* Icon Styling */
+
+mat-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    color: #b22222;
+    flex-shrink: 0;
+}
+
+
+/* Sidebar text */
+
+.sidebar-text {
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-grow: 1;
+    text-align: left;
+}
+
+
+/* Active button */
+
+.sidebar-item.active {
+    background-color: #b22222;
+    color: white;
+}
+
+.sidebar-item.active mat-icon {
+    color: white;
+}
+
+
+/* Nội dung chính */
+
+.main-container {
+    position: absolute;
+    top: 56px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 56px);
+    overflow: auto;
+    /* Chỉ cho phép cuộn nội dung khi cần */
+    padding: 20px;
+    background-color: #f8f8f8;
+}

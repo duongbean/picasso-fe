@@ -1,0 +1,300 @@
+/* Tổng thể */
+
+:host {
+    font-family: "LeagueSpartan-Light";
+    overflow-y: auto;
+    /* Tạo khoảng cách xung quanh nội dung */
+}
+
+.container {
+    background: #ffffff;
+    padding-top: 25px;
+    padding-left: 30px;
+    min-height: 88vh;
+    min-width: 95vw;
+}
+
+mat-icon {
+    color: #9C1D1D;
+    display: block;
+}
+
+strong {
+    display: block;
+}
+
+p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+
+/* Tiêu đề trang */
+
+.page-title {
+    font-size: 24px;
+    font-family: "LeagueSpartan-Bold";
+    text-align: left;
+    margin-bottom: 20px;
+    color: #9C1D1D;
+}
+
+
+/* Mã đơn hàng & trạng thái */
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.order-info {
+    flex-grow: 1;
+    /* Giúp phần thông tin chiếm toàn bộ không gian còn lại */
+    white-space: nowrap;
+    /* Ngăn không cho nội dung xuống dòng */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Nếu quá dài sẽ hiển thị dấu "..." */
+}
+
+.status-badge {
+    flex-shrink: 0;
+    /* Ngăn status co lại hoặc bị đẩy xuống dòng */
+    padding: 5px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    /* Ngăn status bị xuống dòng */
+}
+
+.custom-album-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Khoảng cách giữa icon và chữ */
+    background-color: #007bff;
+    /* Màu xanh dương */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 2%;
+    /* Bo góc */
+    cursor: pointer;
+}
+
+.icon {
+    width: 20px;
+    /* Kích thước icon */
+    height: 20px;
+}
+
+.order-id {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.order-id:hover {
+    text-decoration: underline;
+}
+
+
+/* Trạng thái */
+
+.badge {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 12px;
+}
+
+.status-badge {
+    padding: 8px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 12%;
+}
+
+.status-pending {
+    background-color: #FFC107;
+    /* Vàng */
+    color: #FFFF;
+}
+
+.status-received {
+    background-color: #E1BEE7;
+    /* Xanh dương */
+    color: #8E24AA;
+}
+
+.status-processing {
+    background-color: #BBDEFB;
+    /* Cam */
+    color: #0D47A1;
+}
+
+.status-completed {
+    background-color: #C8E6C9;
+    /* Xanh lá */
+    color: white;
+}
+
+.status-default {
+    background-color: #7f8c8d;
+    /* Xám */
+    color: #1B5E20;
+}
+
+
+/* Thông tin khách hàng & thợ ảnh */
+
+
+/* Tổng thể section */
+
+
+/* Căn chỉnh container chứa 2 phần */
+
+.info-section {
+    display: flex;
+    justify-content: flex-start;
+    /* Đảm bảo phần thông tin bắt đầu từ trái */
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 20px;
+    /* Đảm bảo không bị co lại */
+}
+
+.info-title {
+    color: #9C1D1D;
+    font-family: "LeagueSpartan-Light";
+}
+
+
+/* Định dạng từng phần (Khách hàng / Thợ ảnh) */
+
+.info-box {
+    flex: 1;
+    /* Đảm bảo chia đều khoảng cách */
+    padding: 15px 20px;
+    text-align: left;
+    /* Căn chữ về trái */
+}
+
+
+/* Căn chữ trong từng mục */
+
+.info-item {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    column-gap: 5px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    /* Đảm bảo text bắt đầu từ trái */
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+
+/* Icon và chữ phải cùng thẳng lề */
+
+.info-icon {
+    color: #9C1D1D;
+    margin-right: 10px;
+    font-size: 20px;
+    min-width: 25px;
+    /* Đảm bảo các icon có cùng độ rộng */
+}
+
+
+/* Gạch ngăn giữa 2 phần */
+
+.divider {
+    width: 2px;
+    background: #4b4949;
+    margin: 0 20px;
+    /* Khoảng cách giữa hai phần */
+}
+
+
+/* Bảng album */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background: #f1f1f1;
+    font-weight: bold;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* Nút quản lý album */
+
+.btn-sm {
+    font-size: 14px;
+    padding: 6px 10px;
+}
+
+.loading-overlay {
+    position: fixed;
+    /* Cố định trên toàn bộ trang */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Chiều rộng toàn màn hình */
+    height: 100vh;
+    /* Chiều cao toàn màn hình */
+    background: rgba(255, 255, 255, 0.8);
+    /* Nền mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Đặt trên tất cả các phần tử khác */
+}
+
+
+/* Spinner (vòng quay tải) */
+
+.spinner {
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

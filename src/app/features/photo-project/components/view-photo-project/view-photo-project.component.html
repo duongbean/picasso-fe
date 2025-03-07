@@ -1,0 +1,133 @@
+<div class="work-board-container">
+    <mat-tab-group [disableRipple]="true">
+        <!-- Tab Bảng công việc -->
+        <mat-tab label="Bảng công việc" class="custom-tab">
+            <div class="date-picker-container">
+                <div class="date-inputs">
+                    <div class="custom-date-wrapper">
+                        <div class="custom-input-container">
+                            <input id="start-date" type="date" class="custom-date-input" required (change)="onFilter()">
+                            <label for="start-date" class="floating-label">Từ ngày</label>
+                        </div>
+                    </div>
+                    <div class="custom-date-wrapper">
+                        <div class="custom-input-container">
+                            <input id="end-date" type="date" class="custom-date-input" required (change)="onFilter()">
+                            <label for="end-date" class="floating-label">Đến ngày</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bảng công việc -->
+            <div class="status-container" *ngIf="!isLoading && projects.length > 0">
+                <div class="task-column" *ngFor="let status of ['pending', 'received', 'processing', 'completed']"
+                    [ngClass]="'task-column-' + status">
+
+                    <div class="status-header" [ngClass]="status">
+                        <span class="status-dot" [ngClass]="status"></span>
+                        <span class="status-text">
+                            {{ status === 'pending' ? 'Chờ xác nhận' :
+                            status === 'received' ? 'Đã nhận' :
+                            status === 'processing' ? 'Đang xử lý hậu kỳ' :
+                            'Đã hoàn thành' }}
+                        </span>
+                        <strong>{{ getProjectCount(status) }}</strong>
+                    </div>
+
+                    <div class="task-list">
+                        <mat-card class="task-card" *ngFor="let project of getProjectsByStatus(status)"
+                            (click)="goToProjectDetail(project.id)">
+                            <div class="card-header">
+                                <mat-card-title>{{ project.name }}</mat-card-title>
+                                <span class="location" [ngClass]="getLocationClass(project.roomName)">{{
+                                    project.roomName }}</span>
+                            </div>
+
+                            <mat-card-subtitle>
+                                <mat-icon class="client-icon">person</mat-icon>
+                                {{ customer.lastName + ' ' + customer.middleName + ' ' + customer.firstName|| 'Không có
+                                dữ liệu' }}
+                            </mat-card-subtitle>
+
+                            <mat-card-subtitle>
+                                <mat-icon class="client-icon">event</mat-icon> {{ project.startTime | date: 'dd/MM/yyyy
+                                - HH:mm' }}
+                            </mat-card-subtitle>
+
+                            <mat-card-content class="action-task">
+                                <ng-container *ngIf="project.status === 'Chờ Xác Nhận'">
+                                    <button class="btn btn-success custom-btn accept-btn"
+                                        (click)="acceptProject(project.id); $event.stopPropagation()">Chấp nhận</button>
+                                    <button class="btn btn-danger custom-btn reject-btn"
+                                        (click)="rejectProject(project.id); $event.stopPropagation()">Từ chối</button>
+                                </ng-container>
+                            </mat-card-content>
+
+
+
+                        </mat-card>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Hiển thị thông báo nếu không có dự án -->
+            <div *ngIf="!isLoading && projects.length === 0" class="no-projects">
+                <p>{{ errorMessage || '' }}</p>
+            </div>
+        </mat-tab>
+
+        <!-- Tab Danh sách -->
+        <mat-tab label="Danh sách">
+            <div *ngIf="isLoading" class="loading">
+                <p>Đang tải danh sách dự án...</p>
+            </div>
+
+
+
+            <table *ngIf="!isLoading && allprojects.length > 0" class="table table-hover table-tripped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tên dự án</th>
+                        <th>Khách hàng</th>
+                        <th>Địa điểm chụp</th>
+                        <th>Ngày chụp</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let project of allprojects">
+                        <td>{{ project.name }}</td>
+                        <td> {{ (customer.lastName + ' ' + customer.middleName + ' ' + customer.firstName) || 'Không có
+                            dữ liệu' }}</td>
+                        <td>{{ project.roomName }}</td>
+                        <td>{{ project.startTime | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn dropdown-toggle status-btn" [ngClass]="getStageClass(project.status)"
+                                    type="button">
+                                    <span class="status-dot" [ngClass]="getStageClass(project.status)"></span>
+                                    <span class="status-font">{{ project.status | uppercase }}</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li *ngFor="let status of statusList">
+                                        <a class="dropdown-item" href="#" [ngClass]="getStageClass(status)">
+                                            <span class="status-dot" [ngClass]="getStageClass(status)"></span> {{ status
+                                            | uppercase }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Nếu danh sách rỗng, hiển thị thông báo -->
+            <div *ngIf="!isLoading && allprojects.length === 0" class="no-projects">
+                <p>Không có dữ liệu dự án nào!</p>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

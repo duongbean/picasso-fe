@@ -1,0 +1,29 @@
+<table #scheduleTable class="schedule-table-container">
+    <thead>
+        <tr>
+            <th #currentDateTitle class="y-index-sticky" style="background-color: var(--bg-page-color);">
+            </th>
+            <th class="y-index-sticky p-0 date-in-week-title" *ngFor="let date of weekDays">
+                <div class="th-wrapper">{{ date.formatted }}</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let time of timeSlots" #slotCellWeekly>
+            <td class="time-slot-y-title">{{ time.time }}</td>
+            <!-- Hiển thị project bên trong table -->
+            <td *ngFor="let date of weekDays" class="schedule-cell">
+                <ng-container *ngFor="let project of projects">
+                    <div *ngIf="isProjectStart(project, time.time, date.isoDate)" class="project-card w-49"
+                        [ngClass]="{'right-0': project.projectInfo.roomName === 'Khoang 2' }"
+                        [style.height.px]="calculateHeight(project)"
+                        [style.background-color]="getProjectStatus(project)">
+
+                        <strong class="project-name">{{ project.projectInfo.name }}</strong><br>
+                        <span class="project-customer">Khách: {{ project.projectInfo.customerName }}</span>
+                    </div>
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</table>

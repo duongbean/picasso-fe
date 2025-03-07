@@ -1,0 +1,33 @@
+.saler-sidebar-container {
+    position: fixed;
+    padding-top: 60px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    width: 7%;
+    background-color: var(--secondary-color);
+}
+
+.icon-container {
+    display: flex;
+    padding: 20%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 10%;
+}
+
+.icon-container mat-icon {
+    color: #930C0F;
+    font-size: 35px;
+    width: 35px;
+    height: 35px;
+}
+
+.icon-container.is-active {
+    border: 1px solid;
+    background: #930F0C;
+    border-radius: 10px;
+}
+
+.icon-container mat-icon.is-active {
+    color: #FFF;
+}

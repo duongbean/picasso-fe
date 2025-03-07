@@ -1,0 +1,101 @@
+<div *ngIf="isLoading" class="loading-overlay">
+    <div>
+        <div class="spinner"></div>
+    </div>
+</div>
+<div class="container">
+    <h3 class="page-title">Chi tiết dự án : {{project.name}}</h3>
+
+    <!-- Mã đơn hàng -->
+    <div class="order-header">
+        <p class="order-info">
+            Ngày chụp: {{project.startTime | date: 'dd/MM/yyyy - HH:mm'}} | Nhân viên: Trần Hoàng - thophotogmail.com
+        </p>
+        <span class="badge status-badge" [ngClass]="getStageClass(project.status)">
+            {{ project.status }}
+        </span>
+
+    </div>
+
+
+    <div class="info-section">
+        <!-- Khách hàng -->
+        <div class="info-box">
+            <h5 class="info-title">KHÁCH HÀNG</h5>
+            <div class="info-item">
+                <mat-icon class="info-icon">person</mat-icon>
+                <strong>Họ và tên: </strong> {{ customer.lastName }} {{ customer.middleName }} {{ customer.firstName }}
+            </div>
+            <div class="info-item">
+                <mat-icon class="info-icon">phone</mat-icon>
+                <strong>Số điện thoại: </strong> {{ customer.phoneNumber || 'Chưa cập nhật' }}
+            </div>
+            <div class="info-item">
+                <mat-icon class="info-icon">male</mat-icon>
+                <strong>Giới tính: </strong> {{ customer.gender === "0" ? 'Nam' : customer.gender === "1" ? 'Nữ' : 'Chưa cập nhật' }}
+            </div>
+            <div class="info-item">
+                <mat-icon class="info-icon">email</mat-icon>
+                <strong>Email: </strong> {{ customer.email || 'Chưa cập nhật' }}
+            </div>
+        </div>
+
+        <!-- Gạch ngăn giữa -->
+        <div class="divider"></div>
+
+        <!-- Thợ ảnh -->
+        <div class="info-box">
+            <h5 class="info-title">NHIẾP ẢNH GIA</h5>
+            <div class="info-item">
+                <mat-icon class="info-icon">person</mat-icon>
+                <strong>Họ và tên: </strong> {{ photographer.lastName }} {{ photographer.middleName }} {{ photographer.firstName }}
+            </div>
+            <div class="info-item">
+                <mat-icon class="info-icon">phone</mat-icon>
+                <strong>Số điện thoại: </strong> {{ photographer.phoneNumber || 'Chưa cập nhật' }}
+            </div>
+            <div class="info-item">
+                <mat-icon class="info-icon">male</mat-icon>
+                <strong>Giới tính: </strong> {{ photographer.gender === "1" ? 'Nam' : photographer.gender === "2" ? 'Nữ' : 'Chưa cập nhật' }}
+            </div>
+            <div class="info-item">
+                <mat-icon class="info-icon">email</mat-icon>
+                <strong>Email: </strong> {{ photographer.email || 'Chưa cập nhật' }}
+            </div>
+        </div>
+    </div>
+
+
+
+    <h5 class="page-title">Quản lý thư viện ảnh</h5>
+    <!-- Danh sách dịch vụ chụp ảnh -->
+    <div class="table-responsive">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <strong>Tên Album</strong>
+                    </th>
+                    <th>
+                        Số lượng ảnh</th>
+                    <th>
+                        Ngày tạo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let album of albums">
+                    <td>{{ album.name }}</td>
+                    <td>{{ album.imageCount }}</td>
+                    <td>{{ album.createdTime | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                </tr>
+                <tr *ngIf="albums.length === 0">
+                    <td colspan="3" class="no-data">📂 Không có album nào cho dự án này.</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="custom-album-btn" (click)="goToAlbums()">
+            Quản lý Album
+        </button>
+    </div>
+</div>

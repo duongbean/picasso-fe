@@ -1,0 +1,68 @@
+<div class="user-management">
+    <div *ngIf="isLoading" class="loading-overlay">
+        <div>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="album-container">
+        <!-- Thanh điều hướng -->
+        <div class="album-header d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <mat-icon class="me-2">sort</mat-icon>
+                <span>Sắp xếp</span>
+                <span class="ms-4">Tổng số album đã tạo: {{ totalAlbums }}</span>
+            </div>
+
+            <!-- Thanh tìm kiếm -->
+            <div class="search-bar">
+                <input matInput type="text" placeholder="Tìm kiếm" (input)="filterAlbums()" />
+                <mat-icon class="search-icon">search</mat-icon>
+            </div>
+        </div>
+        <div class="album-grid">
+            <!-- Ô tạo album -->
+            <div class="album-card create-album" (click)="createAlbum()">
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Tạo album</span>
+            </div>
+
+
+            <div *ngFor="let album of filteredAlbums" class="album-card" [style.background-image]="'url(' + album.thumbnail + ')'" (click)="viewAlbumDetail(album.id)">
+
+                <div class="album-info">
+                    <h5 class="album-title">{{ album.name }}</h5>
+                    <p class="album-date">Ngày tạo: {{ album.createdTime | date: 'dd/MM/yyyy' }}</p>
+                    <p class="album-date">Số lượng ảnh: {{album.imageCount}}</p>
+
+                    <div class="album-actions">
+                        <div>
+                            <span class="material-icons">favorite_border</span> 0
+                            <span class="material-icons">chat_bubble_outline</span> 0
+                        </div>
+                        <div>
+
+                            <mat-menu #menu="matMenu" panelClass="custom-menu">
+                                <button mat-menu-item>
+                                    <mat-icon class="material-icons-outlined">download</mat-icon> Tải xuống
+                                </button>
+                                <button mat-menu-item (click)="confirmDeleteAlbum(album.id)">
+                                    <mat-icon class="material-icons-outlined">delete</mat-icon> Xóa album
+                                </button>
+                            </mat-menu>
+
+
+                            <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()" style="border: none; background-color: transparent; color: white;">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

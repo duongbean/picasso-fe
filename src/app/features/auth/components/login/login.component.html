@@ -1,0 +1,82 @@
+<div class="container-fluid login-container">
+    <div class="row vh-100">
+        <div class="col-6">
+            <div class="row logo-container">
+                <div class="col-5 logo-blur-left"></div>
+                <div class="col-2 logo-blur-middle"></div>
+                <div class="col-5 logo-blur-right"></div>
+                <span class="logo-text">PICASSO</span>
+            </div>
+
+            <div class="row">
+                <span class="forgot-password-title">Đăng nhập</span>
+            </div>
+
+            <div class="row">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="forgot-password-form">
+                    <!-- Hiển thị lỗi chung -->
+                    <span *ngIf="errorMessage" class="error-message">{{ errorMessage }}</span>
+                    <br />
+                    <div>
+                        <label class="input-label mb-2">Tài khoản</label>
+                        <div class="email-input-container mt-1">
+                            <mat-icon class="email-input-icon">account_circle</mat-icon>
+                            <input class="form-control account-input" formControlName="email" type="email"
+                                placeholder="Nhập tài khoản" />
+                        </div>
+                        <!-- Hiển thị lỗi nếu email chưa nhập hoặc sai định dạng
+                        <span *ngIf="email?.invalid && email?.touched" class="error-message">
+                        {{ email?.hasError('required') ? 'Email không được để trống.' : '' }}
+                        {{ email?.hasError('email') ? 'Email không hợp lệ.' : '' }}
+                    </span> -->
+                    </div>
+                    <div>
+                        <label class="input-label mb-2">Mật khẩu</label>
+                        <div class="email-input-container mt-1">
+                            <mat-icon class="email-input-icon">lock</mat-icon>
+                            <input class="form-control password-input" formControlName="password"
+                                [type]="hidePassword ? 'password' : 'text'" placeholder="Nhập mật khẩu" />
+                            <!-- Nút hiển thị/ẩn mật khẩu -->
+                            <mat-icon class="toggle-password-icon" (click)="togglePasswordVisibility()">
+                                {{ hidePassword ? 'visibility_off' : 'visibility' }}
+                            </mat-icon>
+                        </div>
+                        <!-- Hiển thị lỗi nếu mật khẩu chưa nhập hoặc quá ngắn -->
+                        <!-- <span *ngIf="password?.invalid && password?.touched" class="error-message"> -->
+                        <!-- {{ password?.hasError('required') ? 'Mật khẩu không được để trống.' : '' }}
+                        {{ password?.hasError('minlength') ? 'Mật khẩu phải có ít nhất 6 ký tự.' : '' }}
+                    </span> -->
+                    </div>
+                    <div *ngIf="showCaptcha">
+                        <label class="input-label">Nhập mã CAPTCHA</label>
+                        <div class="captcha-box">
+                            <span class="captcha-code">{{ captchaCode }}</span>
+                            <input type="text" formControlName="captchaInput" placeholder="Nhập mã trên" required />
+
+                        </div>
+                        <span *ngIf="captchaError" class="error-message">{{ captchaError }}</span>
+
+                    </div>
+
+                    <a class="forgot-password-link" [routerLink]="'/forgot-password'"
+                        style="color: black; text-decoration: none; font-family: 'LeagueSpartan-Bold', sans-serif;">
+                        Quên mật khẩu?
+                    </a>
+
+                    <br />
+                    <input [disabled]="loginForm.invalid" type="submit" class="btn-submit" value="Đăng nhập" />
+                    <div class="btn-submit-blur"></div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-6 m-0 p-0">
+            <img src="../../../../../assets/logo.jpg" class="img-logo" />
+        </div>
+
+    </div>
+</div>
+
+<div class="loading-overlay" *ngIf="loading">
+    <mat-spinner color="primary" diameter="50"></mat-spinner>
+</div>

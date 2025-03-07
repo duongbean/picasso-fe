@@ -1,0 +1,224 @@
+<div class="container mt-4" [ngClass]="{ 'blur-effect': isLoading }">
+    <div class="row justify-content-center sub-container">
+        <div class="col-md-10" style="padding: 5% 0;">
+            <div class="bg-white shadow-lg border-0 rounded-4 d-flex justify-content-evenly update-user-container">
+                <!-- Avatar Container - START -->
+                <div class="avatar-form-container d-flex justify-content-center border-right-1">
+                    <div class="avatar-wrapper">
+                        <img [src]="currentImageUrl || 'assets/images/yen-logo.png'" class="avatar-image" [ngClass]="{'has-image': imageUrl}">
+                        <label for="avatarUpload" class="upload-icon" (click)="openModal()" [ngClass]="{'has-image': imageUrl}">
+                            <mat-icon [ngClass]="{'has-image': imageUrl}">{{ imageUrl ? 'edit' : 'cloud_upload'
+                                }}</mat-icon>
+                        </label>
+                        <span *ngIf="!imageUrl" class="update-user-input-label avatar-noti" (click)="openModal()">Tải
+                            ảnh
+                            đại
+                            diện</span>
+                    </div>
+                    <span class="update-user-input-label avatar-username">{{user.userName}}</span>
+                    <span class="update-user-input-label avatar-email">{{user.email}}</span>
+                </div>
+                <!-- Avatar Container - END -->
+
+                <!-- Update Container - START -->
+                <div class="update-form-container">
+                    <p class="title mb-5">Chỉnh sửa thông tin cá nhân</p>
+                    <form [formGroup]="userForm" class="update-user-form">
+
+                        <div class="update-user-input-container mt-1">
+                            <span class="update-user-input-label">Họ</span><br>
+                            <input class="update-input form-control mt-2" formControlName="lastName" type="text" placeholder="Nhập họ của bạn">
+                        </div>
+                        <div class="mt-2 d-flex pr-10" style="text-align: right;" *ngIf="lastName?.dirty || lastName?.touched">
+                            <div class="text-error" style="color: red" *ngIf="userForm.get('lastName')?.hasError('required')">
+                                Vui lòng không để trống họ!
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['lastName'].hasError('extraSpaces')">
+                                Không được có khoảng trắng ở đầu hoặc cuối.
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['lastName'].hasError('multipleSpaces')">
+                                Không được có hơn một khoảng trắng giữa các từ.
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['lastName'].hasError('maxLength')">
+                                Họ không được dài quá 20 ký tự.
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['lastName'].hasError('invalidCapitalization')">
+                                Chữ cái đầu phải viết hoa, chữ cái sau phải viết thường.
+                            </div>
+                        </div>
+                        <div class="update-user-input-container mt-4">
+                            <span class="update-user-input-label">Tên đệm</span><br>
+                            <input class="update-input form-control mt-2" formControlName="middleName" type="text" placeholder="Nhập tên đệm của bạn">
+                        </div>
+
+                        <div class="update-user-input-container mt-4">
+                            <span class="update-user-input-label">Tên riêng</span><br>
+                            <input class="update-input form-control mt-2" formControlName="firstName" type="text" placeholder="Nhập tên riêng của bạn">
+                        </div>
+                        <div class="mt-2 d-flex pr-10" style="text-align: right;" *ngIf="firstName?.dirty || firstName?.touched">
+                            <div class="text-error" style="color: red" *ngIf="userForm.get('firstName')?.hasError('required')">
+                                Vui lòng không để trống tên riêng!
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['firstName'].hasError('extraSpaces')">
+                                Không được có khoảng trắng ở đầu hoặc cuối.
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['firstName'].hasError('multipleSpaces')">
+                                Không được có hơn một khoảng trắng giữa các từ.
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['firstName'].hasError('maxLength')">
+                                Tên không được dài quá 20 ký tự.
+                            </div>
+                            <div class="text-error" *ngIf="userForm.controls['firstName'].hasError('invalidCapitalization')">
+                                Chữ cái đầu phải viết hoa, chữ cái sau phải viết thường.
+                            </div>
+                        </div>
+
+                        <div class="d-flex collab-container">
+                            <div class="update-user-input-container-sub mt-4 w-100">
+                                <span class="update-user-input-label">Ngày sinh</span><br>
+                                <mat-form-field class="dob-input-field example-form-field update-input mt-2 bd-none">
+                                    <mat-label>Chọn ngày sinh</mat-label>
+                                    <div class="custom-datepicker-container" (click)="datepicker.open()">
+                                        <input matInput [matDatepicker]="datepicker" formControlName="dob" />
+                                    </div>
+                                    <mat-hint>ví dụ: 30/12/2003</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #datepicker panelClass="custom-datepicker">
+                                        <mat-datepicker-actions>
+                                            <button mat-button matDatepickerCancel>Hủy</button>
+                                            <button mat-raised-button matDatepickerApply>Chọn</button>
+                                        </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="update-user-input-container-sub mt-4 w-100">
+                                <span class="update-user-input-label">Giới tính</span><br>
+                                <mat-form-field appearance="outline" class="gender-input-field mt-2 mb-1">
+                                    <mat-label>Giới tính</mat-label>
+                                    <mat-select formControlName="gender">
+                                        <mat-option [value]="1">Nam</mat-option>
+                                        <mat-option [value]="2">Nữ</mat-option>
+                                        <mat-option [value]="3">Khác</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="update-user-input-container mb-3">
+                            <span class="update-user-input-label">Số điện thoại</span><br>
+                            <input class="update-input form-control mt-2" formControlName="phoneNumber" type="text" placeholder="Nhập số điện thoại">
+                        </div>
+                        <div class="mt-2 d-flex pr-10 mb-3" style="text-align: right;" *ngIf="phoneNumber?.dirty || phoneNumber?.touched">
+                            <div class="text-error" style="color: red" *ngIf="userForm.get('phoneNumber')?.hasError('required')">
+                                Vui lòng không để trống số điện thoại!
+                            </div>
+                        </div>
+                        <span class="update-user-input-label ml-10 mt-4">Địa chỉ</span><br>
+                        <div class=" update-user-input-container mt-2 d-flex justify-content-center address-container">
+                            <div class="address-element-container">
+                                <mat-form-field appearance="outline" class="">
+                                    <mat-label>Tỉnh</mat-label>
+                                    <mat-select formControlName="province" (selectionChange)="onProvinceChange($event.value)">
+                                        <mat-option *ngFor="let province of provinces" [value]="province.code">
+                                            {{ province.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="address-element-container">
+                                <mat-form-field appearance="outline" class="">
+                                    <mat-label>Huyện</mat-label>
+                                    <mat-select formControlName="district" (selectionChange)="onDistrictChange($event.value)">
+                                        <mat-option *ngFor="let district of districts" [value]="district.code">
+                                            {{ district.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="address-element-container">
+                                <mat-form-field appearance="outline" class="">
+                                    <mat-label>Xã</mat-label>
+                                    <mat-select formControlName="ward">
+                                        <mat-option *ngFor="let ward of wards" [value]="ward.code">
+                                            {{ ward.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class=" d-flex justify-content-center mt-3 ">
+                            <input type="hidden" formControlName="fullAddress">
+                            <button class="btn-submit-global btn-submit-otp" (click)="saveUpdate()">Lưu</button>
+                            <div class=" btn-summit-otp-gap "></div>
+                            <button class="btn-cancel-global btn-submit-otp" (click)="goBack()">Hủy</button>
+                        </div>
+                        <div class="btn-submit-blur"></div>
+                    </form>
+                </div>
+                <!-- Update Container - END -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL (Hidden Initially) -->
+    <!-- <div class="modal-container" *ngIf="isModalOpen">
+        <div class="modal-content">
+            <button class="close-btn" (click)="closeModal()">✖</button>
+            <h2>Cập nhật Avatar</h2>
+            <div class="d-flex justify-content-evenly mt-5">
+                Avatar Preview
+                <div class="avatar-container d-flex flex-column">
+                    <img [src]="imageUrl" id="avatarPreview" alt="Avatar">
+                    <button class="btn-cancel-global delete-btn mt-4" (click)="deleteAvatar()">Xóa avatar</button>
+                </div>
+
+                File Upload
+                <div class="file-upload mt-3 d-flex flex-column position-relative">
+                    <div class="mt-15">
+                        <input type="file" id="modalAvatarUpload" accept="image/*" (change)="onFileSelected($event)">
+                        <label for="modalAvatarUpload">
+                            <p>Chọn file</p> <span class="border-1" id="fileName">File ảnh
+                                ...</span>
+                        </label>
+                    </div>
+                    <button class="btn-submit-global upload-btn mt-3" (click)="uploadAvatar()">Đặt làm avatar</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- MODAL (Hidden Initially) -->
+    <div class="modal-container" *ngIf="isModalOpen">
+        <div class="modal-overlay" (click)="closeModal()"></div>
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <button class="close-btn" (click)="closeModal()">✖</button>
+            <h2>Cập nhật Avatar</h2>
+            <div class="d-flex justify-content-evenly mt-5">
+                <!-- Avatar Preview -->
+                <div class="avatar-container d-flex flex-column">
+                    <img [src]="imageUrl" id="avatarPreview" alt="Avatar">
+                    <button class="btn-cancel-global delete-btn mt-4" (click)="deleteAvatar()">Xóa avatar</button>
+                </div>
+
+                <!-- File Upload -->
+                <div class="file-upload mt-3 d-flex flex-column position-relative">
+                    <div class="mt-15">
+                        <input type="file" id="modalAvatarUpload" accept="image/*" (change)="onFileSelected($event)">
+                        <label for="modalAvatarUpload">
+                            <p>Chọn file</p> <span class="border-1" id="fileName">File ảnh
+                                ...</span>
+                        </label>
+                    </div>
+
+                    <button class="btn-submit-global upload-btn mt-3" (click)="uploadAvatar()">Đặt làm avatar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Show Loading Spinner -->
+    <div *ngIf="isLoading" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+</div>

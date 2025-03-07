@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid" style="position: relative; height: 60px;">
+        <!-- Logo Section -->
+        <a class="d-flex align-items-center logo-img" href="#">
+            <img src="../../../../../assets/login_noBg.png" alt="Logo" />
+        </a>
+
+        <!-- Search Bar -->
+        <!-- <form class="d-flex flex-grow-1 justify-content-center mx-4">
+            <div class="input-group w-100 search-container">
+                <span class="input-group-text border-0">
+                    <mat-icon class="red-icon">search</mat-icon>
+                </span>
+                <input type="text" class="form-control border-0 shadow-sm search-bar" placeholder="Tìm kiếm" />
+            </div>
+        </form> -->
+
+        <!-- User and Menu Icons -->
+        <div class="d-flex align-items-center action-container">
+            <div class="position-relative me-3">
+                <mat-icon class="red-icon">notifications_active</mat-icon>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    1
+                </span>
+            </div>
+            <img src="../../../../../assets/user-avatar.jpg" alt="User Avatar" class="rounded-circle me-3 user-avt"
+                style="cursor: pointer;" [matMenuTriggerFor]="menu" />
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="navigateToUserDetail()"
+                    style="color: #930C0F; font-family: 'LeagueSpartan-Light', sans-serif;">
+                    <mat-icon class="red-icon">account_circle</mat-icon>
+                    Hồ sơ của bạn
+                </button>
+                <button mat-menu-item [routerLink]="'/change-password'"
+                    style="color: #930C0F; font-family: 'LeagueSpartan-Light', sans-serif;">
+                    <mat-icon class="red-icon">account_circle</mat-icon>
+                    Đổi mật khẩu
+                </button>
+                <button mat-menu-item (click)="logout()"
+                    style="color: #930C0F; font-family: 'LeagueSpartan-Light', sans-serif;">
+                    <mat-icon class="red-icon">logout</mat-icon>
+                    Đăng xuất
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,9 @@
+.body-container {
+    background-color: var(--bg-page-color);
+}
+
+.container-fluid {
+    /* height: 100vh; */
+    /* display: flex; */
+    /* flex-direction: column; */
+}

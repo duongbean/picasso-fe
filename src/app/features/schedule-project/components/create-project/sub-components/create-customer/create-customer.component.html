@@ -1,0 +1,183 @@
+<h2 mat-dialog-title class="text-center pb-2">Tạo mới khách hàng</h2>
+<!-- <div class="width-60"></div> -->
+<mat-dialog-content class="mat-typography">
+    <!-- <p class="visibility-hidden">Learn one way to build applications with Angular and reuse your code and abilities to
+        build apps for any deployment target.</p> -->
+
+    <form [formGroup]="createCustomerForm" class="create-customer-form position-relative">
+
+        <!-- Last Name customer input - start -->
+        <div class="create-customer-input-container mt-4">
+            <span class="input-label">Họ*</span><br>
+            <input class="input-field form-control mt-1" formControlName="lastName" type="text" placeholder="Nhập vào họ">
+        </div>
+        <!-- Last Name customer input - end -->
+
+        <!-- Last Name - Validation -->
+        <div class="" *ngIf="lastName?.dirty || lastName?.touched || isOnSubmit">
+            <div class="text-error" *ngIf="createCustomerForm.get('lastName')?.hasError('required')">
+                Vui lòng không để trống họ!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('lastName')?.hasError('extraSpaces')">
+                Không được có khoảng trắng ở đầu hoặc cuối!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('lastName')?.hasError('multipleSpaces')">
+                Không được có hơn một khoảng trắng giữa các từ!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('lastName')?.hasError('maxLength')">
+                Họ không được dài quá 20 ký tự!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('lastName')?.hasError('invalidCapitalization')">
+                Chữ cái đầu phải viết hoa, chữ cái sau phải viết thường!
+            </div>
+        </div>
+
+        <!-- Middle Name customer input - start -->
+        <div class="create-customer-input-container mt-4">
+            <span class="input-label">Tên đệm</span><br>
+            <input class="input-field form-control mt-1" formControlName="middleName" type="text" placeholder="Nhập vào tên đệm">
+        </div>
+        <!-- Middle Name customer input - end -->
+
+        <!-- First Name customer input - start -->
+        <div class="create-customer-input-container mt-4">
+            <span class="input-label">Tên riêng*</span><br>
+            <input class="input-field form-control mt-1" formControlName="firstName" type="text" placeholder="Nhập vào tên riêng">
+        </div>
+        <!-- First Name customer input - end -->
+        <!-- First Name - Validation -->
+        <div class="" *ngIf="firstName?.dirty || firstName?.touched || isOnSubmit">
+            <div class="text-error" *ngIf="createCustomerForm.get('firstName')?.hasError('required')">
+                Vui lòng không để trống tên riêng!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('firstName')?.hasError('extraSpaces')">
+                Không được có khoảng trắng ở đầu hoặc cuối!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('firstName')?.hasError('multipleSpaces')">
+                Không được có hơn một khoảng trắng giữa các từ!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('firstName')?.hasError('maxLength')">
+                Tên không được dài quá 20 ký tự!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('firstName')?.hasError('invalidCapitalization')">
+                Chữ cái đầu phải viết hoa, chữ cái sau phải viết thường!
+            </div>
+        </div>
+
+        <!-- Email customer input - start -->
+        <div class="create-customer-input-container mt-3">
+            <span class="input-label">Địa chỉ Email*</span><br>
+            <input class="input-field form-control mt-1" formControlName="email" type="text" placeholder="Nhập email">
+        </div>
+        <!-- Email customer input - end -->
+
+        <!-- Email - Validation -->
+        <div class="" *ngIf="email?.dirty || email?.touched || isOnSubmit">
+            <div class="text-error" *ngIf="createCustomerForm.get('email')?.hasError('required')">
+                Vui lòng nhập địa chỉ email!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('email')?.hasError('email')">
+                Vui lòng nhập đúng định dạng email!
+            </div>
+        </div>
+
+        <!-- Phonenumber customer input - start -->
+        <div class="create-customer-input-container mt-3">
+            <span class="input-label">Số điện thoại*</span><br>
+            <input class="input-field form-control mt-1" formControlName="phoneNumber" type="text" placeholder="Nhập số điện thoại">
+        </div>
+        <!-- Phonenumber customer input - end -->
+
+        <!-- Phonenumber - Validation -->
+        <div class="" *ngIf="phoneNumber?.dirty || phoneNumber?.touched || isOnSubmit">
+            <div class="text-error" *ngIf="createCustomerForm.get('phoneNumber')?.hasError('required')">
+                Vui lòng nhập số điện thoại!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('phoneNumber')?.hasError('extraSpaces')">
+                Không có khoảng trắng ở đầu hoặc cuối!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('phoneNumber')?.hasError('invalidFormat')">
+                Phải là 10-11 chữ số!
+            </div>
+            <div class="text-error" *ngIf="createCustomerForm.get('phoneNumber')?.hasError('invalidPhoneNumber')">
+                Kiểm tra số điện thoại hợp lệ tại Việt Nam!
+            </div>
+        </div>
+
+        <!-- Gender customer input - start -->
+        <div class="create-customer-input-container mt-3">
+            <span class="input-label">Giới tính*</span><br>
+            <mat-form-field class="gender-input-field mt-2 mb-1">
+                <!-- <mat-label>Giới tính</mat-label> -->
+                <mat-select formControlName="gender">
+                    <mat-option [value]="1">Nam</mat-option>
+                    <mat-option [value]="2">Nữ</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <!-- Gender customer input - end -->
+
+        <!-- Address customer input Select box - start -->
+        <div class="address-select-container d-flex gap-4 justify-content-center">
+            <div class="address-element-container">
+                <span class="input-label">Tỉnh/Thành phố*</span><br>
+
+                <mat-form-field class="address-input-field">
+                    <mat-label>Tỉnh</mat-label>
+                    <mat-select formControlName="selectedProvinceId" (selectionChange)="onProvinceChange($event.value)">
+                        <!-- <mat-option>
+                            <input type="text" [formControl]="provinceFilterCtrl" />
+                        </mat-option> -->
+                        <mat-option *ngFor="let province of provinces" [value]="province.id">
+                            {{province.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="address-element-container">
+                <span class="input-label">Quận/Huyện*</span><br>
+
+                <mat-form-field class="address-input-field">
+                    <mat-label>Huyện</mat-label>
+                    <mat-select formControlName="selectedDistrictId" (selectionChange)="onDistrictChange($event.value)">
+                        <mat-option *ngFor="let district of districts" [value]="district.id">
+                            {{district.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="address-element-container">
+                <span class="input-label">Phường/Xã*</span><br>
+
+                <mat-form-field class="address-input-field">
+                    <mat-label>Xã</mat-label>
+                    <mat-select formControlName="selectedWardId">
+                        <mat-option *ngFor="let ward of wards" [value]="ward.id">
+                            {{ward.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <!-- Address - Validation -->
+        <div class="margin-top-minus-2" *ngIf="isOnSubmit">
+            <div class="text-error" *ngIf="createCustomerForm.get('selectedProvinceId')?.hasError('required') || createCustomerForm.get('selectedDistrictId')?.hasError('required') || createCustomerForm.get('selectedWardId')?.hasError('required')">
+                Vui lòng hoàn tất chọn địa chỉ!
+            </div>
+        </div>
+        <!-- Detail address customer input - start -->
+        <div class="create-customer-input-container mt-3 mb-2">
+            <span class="input-label">Địa chỉ chi tiết</span><br>
+            <input class="input-field form-control mt-1" formControlName="detailAddress" type="text" placeholder="Nhập tên đường, số nhà, tòa nhà">
+        </div>
+        <!-- Detail address customer input - end -->
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="center" class="gap-5">
+    <button cdkFocusInitial class="btn-submit-global btn-submit-otp p-1 plr-2 width-25 fs-18" (click)="OnSubmitCreateCustomer()">Tạo
+        mới</button>
+    <button class="btn-cancel-global btn-submit-otp  p-1 plr-2 width-25 fs-18" (click)="onCancelCreateCustomer(dialogRef)">Hủy bỏ</button>
+</mat-dialog-actions>
+
+<app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>

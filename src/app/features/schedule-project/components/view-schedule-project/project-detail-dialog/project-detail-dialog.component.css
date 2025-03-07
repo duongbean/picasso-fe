@@ -1,0 +1,123 @@
+.close-dialog-btn,
+.delete-dialog-btn,
+.edit-dialog-btn {
+    border: none;
+    background: none !important;
+    border-radius: 50%;
+}
+
+.close-dialog-btn:hover mat-icon {
+    opacity: 0.7;
+}
+
+.edit-dialog-btn:hover mat-icon,
+.delete-dialog-btn:hover mat-icon {
+    background-color: rgb(140 140 241 / 50%);
+    border-radius: 50%;
+    padding: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 27px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: -10px;
+}
+
+.dialog-action-container {
+    padding-bottom: 0;
+}
+
+.last-content {
+    padding-bottom: 15px !important;
+}
+
+.project-name {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 28px;
+    align-items: center !important;
+}
+
+.project-status {
+    min-width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: #ff6f0a;
+    margin-right: 10px;
+}
+
+.customer-container {
+    column-gap: 15px;
+    color: #000;
+    padding-bottom: 5px;
+}
+
+.customer-container mat-icon {
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+    color: #000;
+}
+
+
+/* Tooltips when hover for actions */
+
+.edit-dialog-btn:hover::after {
+    content: var(--guide-edit-button);
+    position: absolute;
+    bottom: -75%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #FFF;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s visibility 0.3s;
+}
+
+.delete-dialog-btn:hover::after {
+    content: var(--guide-delete-button);
+    position: absolute;
+    bottom: -75%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #FFF;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s visibility 0.3s;
+}
+
+.close-dialog-btn:hover::after {
+    content: var(--guide-close-button);
+    position: absolute;
+    bottom: -35%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #FFF;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s visibility 0.3s;
+}
+
+
+/* Hiển thị tooltip khi hover */
+
+.dialog-action-container button:hover::after {
+    opacity: 1;
+    visibility: visible;
+}

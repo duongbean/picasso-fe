@@ -1,0 +1,473 @@
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:host {
+    display: block;
+    font-family: 'LeagueSpartan-Bold';
+    font-weight: normal;
+    font-size: 16px;
+    color: #930C0F;
+}
+
+.gallery-container {
+    width: 95%;
+    margin: auto;
+    max-width: 95%;
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 60vh;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.overlay h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.overlay p {
+    margin: 5px 0 0;
+    font-size: 1em;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: white;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-badge {
+    display: flex;
+    align-items: center;
+    background: #e8f5e9;
+    color: #388e3c;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.text-icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.material-icons {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.circle-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.circle-btn .material-icons {
+    font-size: 24px;
+    color: #333;
+}
+
+.circle-btn:hover {
+    background: #e0e0e0;
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    color: #d32f2f;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+}
+
+.text-btn .material-icons {
+    color: #d32f2f;
+}
+
+.tabs {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    /* border-bottom: 2px solid #ddd; */
+    margin-bottom: 3px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1em;
+}
+
+.tab.active {
+    color: green;
+    border-bottom: 3px solid green;
+}
+
+
+/* .images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 16px;
+}
+
+.image-item img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+} */
+
+.images-container {
+    column-count: 3;
+    column-gap: 16px;
+    padding-bottom: 50px;
+    overflow-y: auto;
+    min-height: 100vh;
+    margin-top: 3%;
+}
+
+.image-item {
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 16px;
+}
+
+.image-item:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.image-item img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Css for React with Photo Icon */
+
+.image-item mat-icon {
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+    margin: 5px 5px 5px 15px;
+}
+
+.recommend-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    margin: 5px;
+}
+
+.image-item .recommend-icon {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+}
+
+.recommend-guide,
+.pick-guide,
+.favorite-guide {
+    padding-right: 15px;
+    padding-left: 15px;
+    display: none;
+}
+
+.recommend-container:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+    box-shadow: 1px 1px 5px rgb(255 255 255 / 50%);
+}
+
+.recommend-container:hover .recommend-guide {
+    display: inline;
+    text-shadow: 1px 1px 5px #FFF;
+}
+
+.recommend-container:hover .recommend-quantity {
+    display: inline;
+    text-shadow: 1px 1px 5px #FFF;
+}
+
+.is-recommended .recommend-icon {
+    color: yellow;
+    -webkit-text-stroke: 2px yellow;
+}
+
+
+/* Recommend - End */
+
+
+/* Pick - start */
+
+.pick-container,
+.favorite-container {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    margin: 5px;
+}
+
+.favorite-container {
+    margin-left: -15px;
+}
+
+.pick-container:hover,
+.favorite-container:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    box-shadow: 1px 1px 5px rgb(255 255 255 / 50%);
+    cursor: not-allowed;
+}
+
+.favorite-container:hover {
+    margin-left: -5px;
+}
+
+.pick-container:hover .pick-guide,
+.favorite-container:hover .favorite-guide {
+    display: inline;
+    text-shadow: 1px 1px 5px #FFF;
+}
+
+.image-item .pick-icon {
+    color: blue;
+}
+
+.image-item .favorite-icon {
+    color: red;
+}
+
+
+/* Pick + Favorite - End */
+
+.load-more-btn {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.load-more-btn button {
+    padding: 10px 20px;
+    background-color: #b8b7b7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.spinner {
+    font-size: 36px;
+    animation: spin 1s linear infinite;
+    color: #007bff;
+    /* Màu của spinner */
+}
+
+
+/* Định nghĩa hiệu ứng spin */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+.lazy-image {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-out;
+    transform: scale(0.95);
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+.lazy-image {
+    filter: blur(10px);
+    transition: filter 0.3s ease-out;
+}
+
+.lazy-image.loaded {
+    filter: blur(0);
+}
+.skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background-size: 400% 100%;
+    animation: skeleton-loading 1.2s infinite linear;
+    border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+.images-container {
+    column-count: 3;
+    column-gap: 16px;
+    padding-bottom: 50px;
+    overflow-y: auto;
+    min-height: 100vh;
+    margin-top: 3%;
+}
+
+.image-item {
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 16px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-item:hover {
+    transform: scale(1);
+}
+
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.icon-btn {
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.icon-btn svg {
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s ease-in-out;
+    fill: white;
+}
+
+.heart-btn:hover svg {
+    fill: red;
+}
+
+.download-btn:hover svg {
+    fill: black;
+}

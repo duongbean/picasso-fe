@@ -1,0 +1,213 @@
+:host {
+    display: block;
+    background-color: #F4EBE4;
+    font-family: 'LeagueSpartan-Bold';
+    margin-top: 60px;
+}
+
+.edit-user-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: start;
+    margin: auto 5%;
+}
+
+.input-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #9C1D1D;
+    font-family: "LeagueSpartan-Bold";
+    /* 🔥 Đổi thành màu đỏ */
+}
+
+.user-title {
+    color: #9C1D1D;
+    font-size: 27px;
+    font-family: "LeagueSpartan-Bold";
+    margin-left: 11px;
+}
+
+.red-icon {
+    color: #9C1D1D;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-edit-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 20px;
+    width: 85%;
+}
+
+.avatar-section {
+    width: 33%;
+    margin-top: -9%;
+    border-right: 1px dashed #9C1D1D;
+    margin-left: -4%;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ddd;
+    margin: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.user-name {
+    font-size: 18px;
+    color: #9C1D1D;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 0px;
+}
+
+.user-email {
+    font-size: 15px;
+    color: #9C1D1D;
+    text-align: center;
+}
+
+.form-section {
+    width: 55%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    padding-top: 25px;
+}
+
+
+/* Align buttons to the right */
+
+.button-group {
+    display: flex;
+    justify-content: flex-start;
+    /* Đưa các nút về bên phải */
+    gap: 10px;
+    /* Khoảng cách giữa các nút */
+    margin-top: 20px;
+    /* Tạo khoảng cách trên */
+}
+
+
+/* Style for the Save button */
+
+.save-btn {
+    background-color: #9C1D1D !important;
+    /* Nút đỏ */
+    color: white !important;
+    /* Chữ trắng */
+}
+
+
+/* Style for the Cancel button */
+
+.cancel-btn {
+    border: 1px solid #9C1D1D !important;
+    /* Viền đỏ */
+    color: #9C1D1D !important;
+    /* Chữ đỏ */
+    background-color: white !important;
+    /* Nền trắng */
+}
+
+
+/* Hover Effects */
+
+.save-btn:hover {
+    background-color: darkred !important;
+}
+
+.cancel-btn:hover {
+    background-color: #f8d7da !important;
+    /* Nhẹ nhàng highlight */
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #fff;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

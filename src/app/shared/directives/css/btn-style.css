@@ -1,0 +1,217 @@
+:root {
+    --primary-color: #930C0F;
+    --primary-darker-color: #780B0D;
+    --bg-page-color: #F4EBE4;
+    --secondary-color: #FFF;
+    --yellow-background-color: #FDFBCA;
+    --box-shadow-color: #000;
+    --text-error-color: red;
+    --border-radius: 10px;
+    --opacity-hover-btn: 0.7;
+    --close-icon-color: rgba(0, 0, 0, 0.5);
+    --project-status-accepted: #408AD2;
+    --project-status-completed: #44AA19;
+    --project-status-waiting: #F49124;
+    --project-status-photo-done: #BA40D2;
+    --project-status-miss-deadline: #C31C1C;
+    --project-status-blocked: rgba(0, 0, 0, 0.3);
+    --guide-edit-button: 'Chỉnh sửa buổi chụp';
+    --guide-delete-button: 'Xóa buổi chụp';
+    --guide-close-button: 'Đóng';
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.btn-submit-global,
+.btn-active-global {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 20px;
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+    box-shadow: 5px 5px 8px var(--box-shadow-color);
+    outline: none;
+    color: var(--secondary-color);
+    /* cursor: pointer; */
+    cursor: none;
+}
+
+.cursor-auto {
+    cursor: auto !important;
+}
+
+.btn-cancel-global,
+.btn-inactive-global {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 20px;
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+    box-shadow: 5px 5px 8px var(--box-shadow-color);
+    outline: none;
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.btn-submit-global:hover {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    opacity: var(--opacity-hover-btn);
+}
+
+.btn-cancel-global:hover,
+.btn-inactive-global:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    opacity: var(--opacity-hover-btn);
+}
+
+.mt-15 {
+    margin-top: 15%;
+}
+
+.flex-5 {
+    flex: 5;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.w-49 {
+    width: 49%;
+}
+
+.vh-96 {
+    height: 104vh;
+    margin-top: -4vh;
+}
+
+.mt-minus-4 {
+    margin-top: -4vh !important;
+}
+
+.mt-minus-2 {
+    margin-top: -4vh !important;
+}
+
+.mb-minus-15 {
+    margin-bottom: -5vh !important;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.no-hover:hover {
+    background-color: transparent !important;
+    cursor: default !important;
+    pointer-events: none;
+}
+
+.visible-disappear::after {
+    display: none !important;
+}
+
+.width-20 {
+    width: 20%;
+}
+
+.width-25 {
+    width: 25%;
+}
+
+.bg-blue {
+    background-color: blue;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.mt-minus-5 {
+    margin-top: -2%;
+}
+
+.width-60 {
+    width: 60vh;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.plr-2 {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.fs-18 {
+    font-size: 18px !important;
+}
+
+.ml-3 {
+    margin-left: 3%;
+}
+
+.text-error {
+    text-align: left;
+    color: var(--text-error-color);
+    margin-top: 5px;
+}
+
+.is-blocked {
+    background-color: rgba(168, 168, 168, 0.50) !important;
+    /* cursor: not-allowed !important; */
+    pointer-events: none;
+}
+
+.background-grey {
+    background-color: rgba(168, 168, 168, 0.50) !important;
+}
+
+.height-5 {
+    height: 5vh;
+}
+
+.height-70 {
+    height: 65vh;
+}
+
+.margin-top-minus-2 {
+    margin-top: -3%;
+}
+
+.margin-top-minus-4 {
+    margin-top: -4%;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.margin-right-3 {
+    margin-right: 8%;
+}

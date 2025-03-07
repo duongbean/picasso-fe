@@ -1,0 +1,112 @@
+<div class="saler-view-schedule-container vh-96">
+    <div class="row d-flex flex-row  width-100 mt-minus-3 pt-3">
+        <div class="filter-container flex-5 d-flex justify-content-between align-items-center">
+
+
+            <!-- Filter buttons (Date + Week) -->
+            <div class="filter-date-week-container d-flex flex-1">
+                <button #dailyModeButton class="btn-active-global cursor-auto btn-filter-date"
+                    (click)="changeToDailyMode()">Lịch trong
+                    ngày</button>
+                <button #weeklyModeButton class="btn-inactive-global btn-filter-week"
+                    (click)="changeToWeeklyMode()">Lịch
+                    trong
+                    tuần</button>
+            </div>
+
+            <!-- Search form -->
+            <form [formGroup]="searchForm" class="row search-schedule-container position-relative flex-1">
+                <!-- Filter field: Photographer -->
+                <div class="photographer-filter-container col-4">
+                    <mat-form-field>
+                        <mat-icon matPrefix style="color: var(--primary-color);">person</mat-icon>
+                        <mat-label>
+
+                            Nhiếp ảnh gia</mat-label>
+                        <mat-select formControlName="selectedPhotographer">
+                            <mat-option *ngFor="let photographer of photographerSelects" [value]="photographer.id">
+                                {{ photographer.username }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <!-- Filter field: Room -->
+                <div class="room-filter-container col-4">
+                    <mat-form-field>
+                        <mat-icon matPrefix style="color: var(--primary-color);">location_on</mat-icon>
+                        <mat-label>
+                            Khu vực</mat-label>
+                        <mat-select formControlName="selectedStage">
+                            <mat-option *ngFor="let stage of roomSelects" [value]="stage.id">
+                                {{ stage.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <!-- Filter field: Date -->
+                <div class="current-date-filter-container col-4">
+                    <mat-form-field class="current-date-form-field">
+                        <mat-label>Hôm nay</mat-label>
+                        <div class="custom-datepicker-container" (click)="datepicker.open()">
+                            <input matInput [matDatepicker]="datepicker" formControlName="currentDate" />
+                        </div>
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker panelClass="custom-datepicker">
+                            <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Hủy</button>
+                                <button mat-raised-button matDatepickerApply
+                                    (click)="loadBySelectedDate()">Chọn</button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+    <!-- Schedule (mode Daily + Weekly) -->
+    <div class="row schedule-container border-0" #scheduleContainer>
+        <app-view-schedule-project-daily class="p-0" *ngIf="viewMode === 'day'" [projects]="projects"
+            [timeSlots]="slotTimes" [rooms]="rooms" [currentDate]="currentDate">
+        </app-view-schedule-project-daily>
+        <app-view-schedule-project-weekly class="p-0" *ngIf="viewMode === 'week'" [projects]="projectsWeekly"
+            [timeSlots]="slotTimes" [stages]="stages" [weekDays]="weekDays">>
+        </app-view-schedule-project-weekly>
+    </div>
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+
+    <div class="row w-100 mb-minus-15">
+        <!-- Project status description -->
+        <div class="status-description-container d-flex flex-2">
+            <div class="status-item">
+                <div class="status-color-block" style="background-color: var(--project-status-waiting);"></div>
+                <div class="status-color-text">Chờ xác nhận</div>
+            </div>
+            <div class="status-item">
+                <div class="status-color-block" style="background-color: var(--project-status-accepted);"></div>
+                <div class="status-color-text">Chờ chụp</div>
+            </div>
+            <div class="status-item">
+                <div class="status-color-block" style="background-color: var( --project-status-photo-done);"></div>
+                <div class="status-color-text">Đã chụp</div>
+            </div>
+            <div class="status-item">
+                <div class="status-color-block" style="background-color: var(--project-status-completed);"></div>
+                <div class="status-color-text">Hoàn thành</div>
+            </div>
+
+            <div class="status-item">
+                <div class="status-color-block" style="background-color: var(--project-status-miss-deadline);"></div>
+                <div class="status-color-text">Quá hạn</div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,47 @@
+<div class="customer-view-projects-container row">
+    <div class="search-and-filter-container row">
+        <div class="search-container col-4">
+            <form class="d-flex flex-grow-1 justify-content-center mx-4">
+                <div class="input-group w-100 search-container">
+                    <input type="text" class="form-control search-bar" placeholder="Tìm kiếm" />
+                    <span class="input-group-text border-0 search-icon">
+                        <mat-icon class="red-icon">search</mat-icon>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+        <div class="filter-container col-8">
+            <span class="d-flex column-gap-1"><mat-icon class="search-icon">sort</mat-icon>Sắp xếp (Ngày chụp)</span>
+            <span>Tổng số buổi chụp: 3</span>
+        </div>
+    </div>
+
+    <div class="list-projects-container row d-flex">
+        <div class="project-item-container d-flex" *ngFor="let project of projects">
+            <div class="project-detail-container flex-5 position-relative">
+                <img class="image-container" src="../../../../../assets/logo.jpg" alt="">
+                <div class="overlay-image"></div>
+                <div class="middle">
+                    <div class="view-detail-button">Xem chi tiết</div>
+                </div>
+                <span class="project-name">{{project.projectInfo.name}}<span class="project-date">Ngày chụp:
+                        {{formatDateByViForm(project.projectInfo.startTime)}}</span></span>
+
+                <div class="project-footer-container d-flex">
+                    <span class="project-quantity">Tổng số Album: {{project.albumCount}}</span>
+                    <div class="project-status" [style.background-color]="getProjectStatus(project)">
+                        {{project.projectInfo.status}}
+                    </div>
+                </div>
+
+            </div>
+            <div class="photographer-detail-container flex-2">
+
+                <img class="photographer-avatar" src="../../../../../assets/user-avatar.jpg" alt="">
+                <span class="photographer-title d-block">Nhiếp ảnh gia</span>
+                <span class="photographer-name d-block">Duong Doan</span>
+            </div>
+        </div>
+    </div>
+</div>

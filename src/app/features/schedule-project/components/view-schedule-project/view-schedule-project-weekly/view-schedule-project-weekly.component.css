@@ -1,0 +1,41 @@
+.time-slot-y-title {
+    background: #930C0F;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid;
+    padding: 5px 15px;
+    border: 1px solid var(--bg-page-color);
+}
+
+.schedule-container {
+    border: none;
+}
+
+.date-in-week-title {
+    background-color: #FFF8E7;
+    color: #930C0F;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 12px;
+    border-left: 1px solid var(--bg-page-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.th-wrapper {
+    padding: 20px 40px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.project-name {
+    font-size: 14px;
+    font-family: 'LeagueSpartan-Bold';
+}
+
+.project-customer {
+    font-size: 12px;
+    font-family: 'LeagueSpartan-Light';
+}

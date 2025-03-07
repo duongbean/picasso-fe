@@ -1,0 +1,615 @@
+:root {
+    --primary-color: #9C1D1D;
+    --primary-hover: #7A1717;
+    --bg-light: #F8F9FA;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.border-right-1 {
+    border-right: 1px solid rgba(0, 0, 0, 0.20);
+    ;
+}
+
+:host {
+    display: block;
+    background-color: #F4EBE4;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.update-user-container {
+    padding: 4%;
+    padding-left: 0;
+}
+
+.title {
+    color: #9C1D1D;
+    font-weight: bold;
+    text-align: center;
+    font-size: 48px;
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+}
+
+.main-content {
+    background-color: #F4EBE4;
+    min-height: 100vh;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.container {
+    /* max-width: 70%; */
+}
+
+.sub-container {
+    /* margin: 12% 0%;
+    padding-left: 26%; */
+}
+
+.card {
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-custom {
+    color: var(--primary-color) !important;
+}
+
+mat-form-field {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.btn-custom {
+    background-color: #9C1D1D;
+    color: #ffffff;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+    background-color: var(--primary-hover);
+    color: #9C1D1D;
+    ;
+}
+
+.avatar-form-container {
+    flex: 1;
+}
+
+.update-form-container {
+    flex: 2;
+}
+
+.update-user-input-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.update-user-input-container input {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.update-user-input-label {
+    color: #900B09;
+    font-family: 'LeagueSpartan-Light', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.btn-submit-otp {
+    padding: 1%;
+    width: 25%;
+}
+
+.btn-summit-otp-gap {
+    width: 10%;
+}
+
+.submit-true:hover {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background-color: #FFF;
+    color: #930C0F;
+    opacity: 0.7;
+}
+
+.submit-false:hover {
+    background-color: #930C0F;
+    color: #FFF;
+    opacity: 0.7;
+}
+
+.avatar-image {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    opacity: 0.4;
+    filter: grayscale(100%) brightness() blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: #646464;
+    object-fit: cover;
+}
+
+.avatar-image.has-image {
+    opacity: 1;
+    filter: none;
+}
+
+.avatar-form-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-wrapper {
+    position: relative;
+    display: inline-block;
+    height: 65%;
+}
+
+.upload-icon:hover,
+.avatar-noti:hover {
+    color: #fff;
+}
+
+.avatar-noti:hover {
+    text-shadow: 0px 0px 0 #930C0F, 0px 0px 0 #930C0F, 0px 0px 0 #930C0F, 1px 1px 0 #930C0F;
+}
+
+.upload-icon {
+    position: absolute;
+    top: 20%;
+    right: 25%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #930C0F;
+    cursor: pointer;
+}
+
+.upload-icon.has-image {
+    position: absolute;
+    top: 43%;
+    right: -10%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 23%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #930C0F;
+    cursor: pointer;
+    border: 1px solid;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.upload-icon.has-image:hover {
+    color: #fff;
+    /* background-color: #930C0F; */
+    background-color: rgba(147, 12, 15, .7);
+    border: 1px solid #fff;
+}
+
+.upload-icon mat-icon {
+    font-size: 60px;
+    height: 60px;
+    width: 66px;
+    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+    overflow: visible;
+    /* border: 1px solid rgba(254, 249, 225, 1); */
+}
+
+.upload-icon mat-icon.has-image {
+    text-shadow: none;
+}
+
+.upload-icon mat-icon:hover {
+    text-shadow: -2px -2px 0 #930C0F, 2px -2px 0 #930C0F, -2px 2px 0 #930C0F, 2px 2px 0 #930C0F;
+}
+
+.upload-icon mat-icon.has-image:hover {
+    text-shadow: none;
+}
+
+.file-input {
+    display: none;
+}
+
+.avatar-noti {
+    position: absolute;
+    top: 28%;
+    right: 25%;
+    cursor: pointer;
+}
+
+.avatar-username {
+    position: absolute;
+    margin-top: 25%;
+}
+
+.avatar-email {
+    position: absolute;
+    margin-top: 45%;
+    font-size: 16px;
+    opacity: 0.5;
+}
+
+
+/* Modal Styles */
+
+.modal-container {
+    position: fixed;
+    top: 48%;
+    left: 29%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 999;
+}
+
+h2 {
+    color: #9C1D1D;
+    font-size: 40px;
+    margin-bottom: -5px;
+    font-weight: 700;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/* Close Button */
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--close-icon-color);
+    font-family: 'LeagueSpartan-Bold';
+}
+
+.close-btn:hover {
+    color: black;
+}
+
+
+/* Avatar Preview */
+
+.avatar-container img {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+
+/* File Upload */
+
+.file-upload input {
+    display: none;
+}
+
+.file-upload label {
+    background: #ccc;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 60px;
+    border: 1px solid;
+}
+
+.file-upload span {
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    margin-right: -15px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    padding: 15px 15px;
+    padding-right: 90px;
+    margin-left: 35px;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    font-size: 12px;
+    color: #c7c7c7;
+}
+
+.file-upload p {
+    display: inline-block;
+    margin: 0;
+    padding-left: 22px;
+    font-weight: 700;
+}
+
+
+/* Buttons */
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.upload-btn {
+    height: 45px;
+    width: 52%;
+    font-size: 18px;
+    right: 0;
+    position: absolute;
+    top: 25%;
+}
+
+.delete-btn {
+    height: 45px;
+    width: 52%;
+    font-size: 18px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Black background with 50% opacity */
+    z-index: 998;
+}
+
+.collab-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.example-form-field {
+    margin-right: 20px;
+}
+
+.example-form-field div:first-child {
+    background-color: red;
+}
+
+.bd-none {
+    border: none;
+}
+
+.custom-datepicker .mat-datepicker-content {
+    position: absolute !important;
+    z-index: 99999 !important;
+}
+
+.custom-datepicker-container {
+    cursor: pointer;
+    width: 100%;
+}
+
+.custom-datepicker-container input {
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.pr-10 {
+    padding-right: 10%;
+    justify-content: right;
+}
+
+.container.blur-effect {
+    filter: blur(10px);
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.loading-overlay {
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 1000;
+}
+
+.text-error {
+    font-family: 'LeagueSpartan-Light';
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    color: red;
+}
+
+.ml-20 {
+    margin-left: 20%;
+}
+
+.ml-10 {
+    margin-left: 10%;
+}
+
+.address-container {
+    column-gap: 25px;
+}
+
+.address-element-container {
+    flex: 1;
+    width: 30%;
+}
+
+.update-user-input-container-sub mat-form-field {
+    width: 100%;
+}
+
+
+/* .modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+} */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 29%;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    z-index: 999;
+    left: 50%;
+    margin-top: 10%;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 1.0);
+}
+
+@media (max-width: 1420px) {
+    .avatar-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .avatar-wrapper {
+        padding: 10px;
+    }
+
+    .upload-icon.has-image {
+        width: 50px;
+        height: 50px;
+        top: 36%;
+        right: -8%;
+    }
+
+    .upload-icon mat-icon.has-image {
+        font-size: 43px;
+        height: 40px;
+        width: 42px;
+    }
+
+    .upload-icon .mat-icon {
+        width: 48px;
+    }
+
+    .avatar-noti {
+        right: 22%;
+    }
+
+    .avatar-username {
+        margin-top: 0%;
+    }
+
+    .avatar-email {
+        margin-top: 22%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .update-form-container {
+        width: 75%;
+    }
+
+    .update-user-input-container-sub mat-form-field {
+        width: 96%;
+    }
+
+    .update-user-input-container-sub .dob-input-field {
+        margin-right: 4%;
+    }
+
+    .update-user-input-container-sub .gender-input-field {
+        margin-left: 4%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .update-form-container {
+        width: 75%;
+    }
+
+    .update-user-input-container-sub mat-form-field {
+        width: 80%;
+    }
+
+    .update-user-input-container-sub .gender-input-field {
+        margin-left: 12%;
+    }
+
+    .update-user-input-container-sub .dob-input-field {
+        margin-right: 10%;
+    }
+
+    .title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 1190px) {
+    .update-form-container {
+        width: 75%;
+    }
+
+    .update-user-input-container-sub mat-form-field {
+        width: 80%;
+    }
+
+    .update-user-input-container-sub .dob-input-field {
+        margin-right: 12%;
+    }
+
+    .update-user-input-container-sub .gender-input-field {
+        margin-left: -1%;
+    }
+}
+
+@media (max-width: 1080px) {
+    .update-form-container {
+        width: 60%;
+    }
+
+    .update-user-input-container-sub mat-form-field {
+        width: 65%;
+    }
+
+    .update-user-input-container-sub .gender-input-field {
+        margin-left: 15%;
+    }
+}

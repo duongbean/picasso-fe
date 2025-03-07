@@ -1,0 +1,7 @@
+.body-container {
+    position: relative;
+    background-color: var(--bg-page-color);
+    /* z-index: -5; */
+    /* height: 100vh; */
+    /* overflow: scroll; */
+}

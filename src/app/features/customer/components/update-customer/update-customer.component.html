@@ -1,0 +1,106 @@
+<div class="header-buttons">
+    <div class="header">
+        <button class="btn-icon" (click)="goBack()">
+        <mat-icon class="red-icon">arrow_back</mat-icon>
+    </button>
+        <h2 class="user-title">Chỉnh sửa thông tin khách hàng</h2>
+    </div>
+</div>
+<div class="edit-user-container">
+    <div class="user-edit-content">
+        <!-- Avatar Section -->
+        <div class="avatar-section">
+            <div class="avatar-wrapper">
+                <img src="'../../../../../../../assets/logo.jpg" alt="User Avatar" class="avatar-img">
+            </div>
+            <p class="user-name">{{ user.name || "Người dùng" }}</p>
+            <p class="user-email">{{ user.email || "email@example.com" }}</p>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <form [formGroup]="customerForm" class="update-user-form" (ngSubmit)="updateCustomer()">
+                <!-- Họ và tên -->
+                <div class="input-label">Họ và tên*</div>
+                <mat-form-field appearance="outline" class="full-width">
+                    <input matInput type="text" formControlName="name" placeholder="Nhập họ và tên">
+
+                    <mat-error *ngIf="customerForm.controls['name'].hasError('extraSpaces')">
+                        Không được có khoảng trắng ở đầu hoặc cuối.
+                    </mat-error>
+
+                    <mat-error *ngIf="customerForm.controls['name'].hasError('multipleSpaces')">
+                        Không được có hơn một khoảng trắng giữa các từ.
+                    </mat-error>
+
+                    <mat-error *ngIf="customerForm.controls['name'].hasError('minWords')">
+                        Họ và tên phải có ít nhất hai từ.
+                    </mat-error>
+
+                    <mat-error *ngIf="customerForm.controls['name'].hasError('maxLength')">
+                        Họ và tên không được dài quá 100 ký tự.
+                    </mat-error>
+
+                    <mat-error *ngIf="customerForm.controls['name'].hasError('invalidCapitalization')">
+                        Mỗi từ phải bắt đầu bằng chữ hoa, các chữ sau phải là chữ thường.
+                    </mat-error>
+                </mat-form-field>
+                <!-- Email -->
+                <div class="input-label">Địa chỉ Email*</div>
+                <mat-form-field appearance="outline" class="full-width">
+                    <input matInput type="email" formControlName="email" placeholder="Nhập email">
+                    <mat-error *ngIf="customerForm.controls['email'].invalid && customerForm.controls['email'].touched">
+                        Vui lòng nhập email hợp lệ.
+                    </mat-error>
+                </mat-form-field>
+                <!-- Số điện thoại -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-label">Số điện thoại*</div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <input matInput type="tel" formControlName="phoneNumber" placeholder="Nhập số điện thoại">
+                            <mat-error *ngIf="customerForm.controls['phoneNumber'].hasError('extraSpaces')">
+                                Số điện thoại không được chứa khoảng trắng ở đầu hoặc cuối.
+                            </mat-error>
+                            <mat-error *ngIf="customerForm.controls['phoneNumber'].hasError('invalidFormat')">
+                                Số điện thoại phải chứa 10-11 chữ số.
+                            </mat-error>
+                            <mat-error *ngIf="customerForm.controls['phoneNumber'].hasError('invalidPhoneNumber')">
+                                Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại đúng định dạng (VD: 0987654321).
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+
+                    <!-- Giới tính -->
+                    <div class="col-md-6">
+                        <div class="input-label">Giới tính*</div>
+                        <mat-form-field appearance="outline" class="full-width" placeholder="Giới tính">
+                            <mat-select formControlName="gender">
+                                <mat-option [value]="0">Nam</mat-option>
+                                <mat-option [value]="1">Nữ</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <!-- Nút Lưu / Hủy -->
+                <div class="button-group">
+                    <button mat-raised-button color="warn" type="submit" class="save-btn" [disabled]="customerForm.invalid">
+                        Lưu
+                    </button>
+                    <button mat-stroked-button type="button" class="cancel-btn" (click)="goBack()">
+                        Hủy
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.admin-footer {
+    background-color: white;
+    /* 🔥 Màu tối phù hợp với admin */
+    color: #930C0F;
+    position: sticky;
+    /* 🔥 Cố định footer */
+    bottom: 0;
+    font-size: 14px;
+    text-align: center;
+    font-family: "LeagueSpartan-Light";
+}
+
+
+/* 📌 Chia layout thành 2 phần: Bản quyền & Hỗ trợ */
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 📌 Phần bên trái (Bản quyền) */
+
+.footer-left {
+    text-align: left;
+}
+
+
+/* 📌 Phần bên phải (Hỗ trợ) */
+
+.footer-right {
+    text-align: right;
+}
+
+p {
+    margin-bottom: 0;
+    margin-left: 35px;
+}
+
+
+/* 📌 Link hỗ trợ */
+
+.footer-right a {
+    color: #245cd5;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.footer-right a:hover {
+    color: #245cd5;
+}

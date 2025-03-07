@@ -1,0 +1,67 @@
+<div class="user-management">
+    <!-- Header Section -->
+    <div class="header-buttons">
+        <span class="user-title">Danh sách khách hàng</span>
+        <button class="btn btn-primary active" [routerLink]="['/create-customer']">Tạo tài khoản</button>
+    </div>
+
+    <!-- Table Section -->
+    <div class="user-table">
+        <!-- Thêm lớp overlay để hiển thị loading nhưng giữ nguyên dữ liệu -->
+        <div class="loading-overlay" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+            <!-- Loading icon -->
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Họ và Tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Số lần đặt lịch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="!isLoading && users.length === 0">
+                    <td colspan="8">Không có dữ liệu khách hàng.</td>
+                </tr>
+                <tr *ngFor="let user of users; let i = index" (click)="navigateToUserDetail(user.id)">
+                    <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                    <td>
+                        <div class="user-info">
+
+                            <mat-icon class="default-avatar-icon">person</mat-icon>
+                            <a class="clickable">
+                                {{ user.lastName + ' ' + user.middleName + ' ' + user.firstName || 'Chưa cập nhật' }}
+                            </a>
+
+                        </div>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <!-- <td>{{ user.gender === '0' ? 'Nam' : 'Nữ' }}</td> -->
+                    <td>{{ user.phoneNumber }}</td>
+                    <td> {{ user.numberOfApm }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-container">
+        <div class="pagination-buttons">
+            <button class="page-btn" [disabled]="currentPage === 1" (click)="changePage(1)">«</button>
+            <button class="page-btn" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">‹</button>
+
+            <button *ngFor="let page of paginationRange" class="page-btn" [class.active]="page === currentPage" (click)="changePage(page)">
+                {{ page }}
+            </button>
+
+            <button class="page-btn" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">›</button>
+            <button class="page-btn" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">»</button>
+        </div>
+
+        <span class="pagination-info">
+            Trang {{ currentPage }} / {{ totalPages }} | Tổng số khách hàng: {{ totalUsers }}
+        </span>
+    </div>
+</div>

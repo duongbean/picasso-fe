@@ -1,0 +1,99 @@
+<div class="user-management">
+    <!-- Header Section -->
+    <div class="header-buttons">
+        <span class="user-title">Danh sách nhân viên</span>
+        <div class="col-6">
+            <form class="d-flex flex-grow-1 justify-content-center mx-4">
+                <div class="input-group w-100 search-container">
+                    <input type="text" class="form-control search-bar"
+                        placeholder="Tìm kiếm theo tên, email, số điện thoại, địa chỉ" [formControl]="searchInput" />
+                    <span class="input-group-text border-0 search-icon">
+                        <mat-icon class="red-icon">search</mat-icon>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-primary active" [routerLink]="['/create-user']">Tạo tài khoản</button>
+    </div>
+
+    <!-- Table Section -->
+    <div class="user-table">
+        <!-- Thêm lớp overlay để hiển thị loading nhưng giữ nguyên dữ liệu -->
+        <div class="loading-overlay" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+            <!-- Loading icon -->
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Họ và Tên</th>
+                    <th>Email</th>
+                    <th>Giới Tính</th>
+                    <th>Vai Trò</th>
+                    <th>Trạng Thái Tài Khoản</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="!isLoading && users.length === 0">
+                    <td colspan="8">Không có dữ liệu.</td>
+                </tr>
+                <tr *ngFor="let user of users; let i = index" (click)="navigateToUserDetail(user.id)">
+                    <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                    <td>
+                        <div class="user-info">
+
+                            <mat-icon class="default-avatar-icon">account_circle</mat-icon>
+                            <a class="clickable">
+                                {{ user.lastName }} {{ user.middleName }} {{ user.firstName }}
+                            </a>
+
+                        </div>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.gender === '0' ? 'Nam' : 'Nữ' }}</td>
+                    <td>{{ user.roleName }}</td>
+                    <td>
+                        <div class="switch-container" (click)="$event.stopPropagation()">
+                            <label class="custom-switch" [ngClass]="{ 'disabled-switch': isCurrentUser(user) }">
+                                <input type="checkbox" [checked]="user.isActive" [disabled]="isCurrentUser(user)"
+                                    (change)="onToggleActive(user)">
+                                <span class="slider">
+                                    <mat-icon class="circle">
+                                        {{ user.isActive ? 'check_circle_outline' : 'highlight_off' }}
+                                    </mat-icon>
+                                </span>
+                            </label>
+                            <span [ngClass]="user.isActive ? 'status-active' : 'status-inactive'">
+                                {{ user.isActive ? 'Hoạt động' : 'Vô hiệu hóa' }}
+                            </span>
+                        </div>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-container">
+        <div class="pagination-buttons">
+            <button class="page-btn" [disabled]="currentPage === 1" (click)="changePage(1)">«</button>
+            <button class="page-btn" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">‹</button>
+
+            <button *ngFor="let page of paginationRange" class="page-btn" [class.active]="page === currentPage"
+                (click)="changePage(page)">
+                {{ page }}
+            </button>
+
+            <button class="page-btn" [disabled]="currentPage === totalPages"
+                (click)="changePage(currentPage + 1)">›</button>
+            <button class="page-btn" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">»</button>
+        </div>
+
+        <span class="pagination-info">
+            Trang {{ currentPage }} / {{ totalPages }} | Tổng số nhân viên: {{ totalUsers }}
+        </span>
+    </div>
+</div>

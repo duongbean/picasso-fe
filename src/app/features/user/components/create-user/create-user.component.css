@@ -1,0 +1,169 @@
+:root {
+    --primary-color: #9C1D1D;
+    --primary-hover: #7A1717;
+    --bg-light: #F8F9FA;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:host {
+    display: block;
+    background-color: #F4EBE4;
+    padding: 20px;
+    /* Tạo khoảng cách xung quanh nội dung */
+}
+
+.title {
+    color: #9C1D1D;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+}
+
+.row-group {
+    display: flex;
+    gap: 15px;
+    /* Giữ khoảng cách giữa các trường */
+}
+
+
+/* 📌 Giới tính & Vai trò chiếm 50% chiều rộng */
+
+.half-width {
+    flex: 1;
+}
+
+
+/* 📌 Nhóm nhập Họ - Tên Đệm - Tên */
+
+
+/* Đặt màu nền cho toàn bộ trang */
+
+.btn-cancel {
+    background-color: #ffffff !important;
+    /* Nền trắng */
+    color: #7A1717 !important;
+    /* Chữ màu đỏ */
+    border: 1.5px solid #7A1717 !important;
+    /* Viền đỏ */
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.main-content {
+    background-color: #F4EBE4;
+    /* Giúp nội dung không dính sát mép */
+    border-radius: 10px;
+    /* Tạo viền bo góc nhẹ */
+}
+
+.card {
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    height: 70%;
+    margin-top: 12%;
+}
+
+
+/* Custom Text Color */
+
+.text-custom {
+    color: var(--primary-color) !important;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    /* Làm mờ nền */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    /* Đảm bảo lớp loading hiển thị trên cùng */
+    backdrop-filter: blur(5px);
+    /* Hiệu ứng mờ nền */
+    border-radius: 10px;
+}
+
+mat-spinner {
+    width: 50px !important;
+    height: 50px !important;
+    color: #B22222 !important;
+    /* Màu đỏ đẹp */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.loading-text {
+    margin-top: 10px;
+}
+
+
+/* Form Field Styling */
+
+mat-form-field {
+    margin-bottom: 0;
+}
+
+.name-group {
+    flex-direction: column;
+}
+
+
+/* ✅ Chứa mỗi input */
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ✅ Nhãn màu đỏ thay thế placeholder */
+
+.input-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #9C1D1D;
+    font-family: "LeagueSpartan-Bold";
+    /* 🔥 Đổi thành màu đỏ */
+}
+
+
+/* ✅ Đảm bảo input full chiều ngang */
+
+.full-width {
+    width: 100%;
+}
+
+
+/* Custom Button */
+
+.btn-custom {
+    background-color: #9C1D1D;
+    color: #ffffff;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+    background-color: var(--primary-hover);
+    color: #9C1D1D;
+    ;
+}

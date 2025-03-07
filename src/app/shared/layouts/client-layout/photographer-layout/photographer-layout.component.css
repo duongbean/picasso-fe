@@ -1,0 +1,22 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Đảm bảo chiều cao tối thiểu bằng viewport */
+}
+
+.content {
+    flex: 1;
+    /* Tự động chiếm khoảng trống còn lại */
+    overflow-y: auto;
+    /* Cuộn nếu nội dung dài */
+    padding-top: 60px;
+    background: #f9f9f9;
+}
+
+.admin-footer {
+    width: 100%;
+    background: #333;
+    color: white;
+    text-align: center;
+}

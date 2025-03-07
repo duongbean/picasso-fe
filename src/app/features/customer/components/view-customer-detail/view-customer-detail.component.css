@@ -1,0 +1,347 @@
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+}
+
+:host {
+    display: block;
+    background-color: #F4EBE4;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'LeagueSpartan-Bold';
+    margin-top: 60px;
+}
+
+.user-detail-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.user-title {
+    color: #9C1D1D;
+    font-size: 27px;
+    font-family: "LeagueSpartan-Bold";
+    margin-left: 11px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.header-buttons .btn {
+    padding: 10px 20px;
+    margin-left: 50px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-buttons .btn-primary {
+    background-color: #B22222;
+    color: #FFFF;
+}
+
+.header-buttons .btn.active {
+    background-color: #B22222;
+    color: #FFFF;
+}
+
+
+/* Bố cục avatar và thông tin người dùng */
+
+.user-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    background: white;
+}
+
+
+/* Avatar (chiếm 4 cột) */
+
+.user-avatar {
+    flex: 4;
+    display: flex;
+    justify-content: center;
+}
+
+.user-avatar img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #9C1D1D;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Thông tin người dùng (chiếm 8 cột) */
+
+.user-info {
+    flex: 8;
+}
+
+
+/* Căn thông tin thành các hàng */
+
+.status-icon {
+    font-size: 24px;
+    /* Định kích thước icon */
+    vertical-align: middle;
+    /* Căn giữa với văn bản */
+    margin-right: 5px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+
+/* Tùy chỉnh mat-spinner */
+
+mat-spinner {
+    width: 50px !important;
+    height: 50px !important;
+    color: #B22222 !important;
+    /* Màu đỏ */
+}
+
+.active {
+    color: green;
+    /* Màu xanh cho Hoạt động */
+}
+
+.red-icon {
+    color: #9C1D1D;
+}
+
+.inactive {
+    color: #9C1D1D;
+    /* Màu đỏ cho Vô hiệu hóa */
+}
+
+.active-label {
+    color: green;
+    /* Màu xanh cho nhãn Hoạt động */
+    font-weight: bold;
+}
+
+.inactive-label {
+    color: #9C1D1D;
+    /* Màu đỏ cho nhãn Vô hiệu hóa */
+    font-weight: bold;
+}
+
+.user-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+
+/* Mỗi ô thông tin */
+
+.user-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* Các mục trong mỗi hàng chia đều 3 phần */
+
+.user-item.third {
+    width: 30%;
+}
+
+
+/* Email và Address xuống hàng riêng biệt */
+
+.user-item.full {
+    width: 100%;
+}
+
+
+/* Định dạng icon */
+
+.user-item mat-icon {
+    color: #B22222;
+    /* Màu đỏ */
+    font-size: 22px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    /* 🔥 Tạo khoảng cách giữa các cột */
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    /* 🔥 Mỗi item chiếm đều 50% */
+}
+
+
+/* ✅ Đảm bảo các dòng full chiếm toàn bộ chiều rộng */
+
+.user-item.half {
+    flex: 1;
+    /* 🔥 Chiếm 50% mỗi cột */
+}
+
+
+/* ✅ Thiết lập icon và văn bản */
+
+mat-icon {
+    color: #9C1D1D;
+    font-size: 20px;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.value {
+    color: #666;
+}
+
+
+/* ✅ Định dạng giá trị */
+
+.value {
+    color: #333;
+    font-family: 'LeagueSpartan-Light';
+    display: inline;
+    /* 🔥 Giữ nội dung inline */
+}
+
+
+/* Đường line ngăn cách giữa các hàng */
+
+.line {
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+
+/* Địa chỉ */
+
+.user-address {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-address mat-icon {
+    color: #B22222;
+    margin-right: 8px;
+}
+
+.work-schedule,
+.customer-reviews {
+    margin-top: 40px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.work-schedule h3,
+.customer-reviews h3 {
+    color: #B22222;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.schedule-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 30%;
+}
+
+.schedule-item mat-icon {
+    color: #B22222;
+}
+
+.customer-reviews .review {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.customer-reviews .review mat-icon {
+    color: #FFC107;
+}
+
+.customer-reviews .reviewer {
+    font-style: italic;
+    color: #777;
+}
+
+.user-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-item.third {
+    width: 30%;
+}
+
+.user-item.full {
+    width: 100%;
+}
+
+.user-item mat-icon {
+    color: #B22222;
+    font-size: 22px;
+}

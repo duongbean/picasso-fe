@@ -1,0 +1,178 @@
+<div *ngIf="isLoading" class="loading-overlay">
+    <mat-spinner></mat-spinner>
+</div>
+<div class="user-management">
+    <!-- Header Section -->
+    <!-- Header Section -->
+    <div class="header-buttons">
+        <div>
+            <!-- Nút Quay lại -->
+            <button class="btn-icon" (click)="goBack()">
+                <mat-icon class="red-icon">arrow_back</mat-icon>
+            </button>
+
+            <!-- Tiêu đề người dùng -->
+            <span class="user-title">Thông tin nhân viên</span>
+        </div>
+
+        <div>
+            <button class="btn btn-primary active" [routerLink]="'/update-user-private-information'">
+                Chỉnh sửa tài khoản
+            </button>
+
+        </div>
+        <!-- Nút Chỉnh sửa tài khoản -->
+
+    </div>
+
+
+    <div class="user-detail-container">
+
+        <!-- Nếu dữ liệu đang tải -->
+        <div class="user-status">
+            <mat-icon *ngIf="user.isActive" class="status-icon active">check_circle</mat-icon>
+            <mat-icon *ngIf="!user.isActive" class="status-icon inactive">error</mat-icon>
+            <span class="status-label" [ngClass]="{ 'active-label': user.isActive, 'inactive-label': !user.isActive }">
+                {{ user.isActive ? 'Hoạt động' : 'Vô hiệu hóa' }}
+            </span>
+        </div>
+
+
+        <!-- Nếu có lỗi -->
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <div *ngIf="user" class="user-detail-container">
+            <div class="user-header">
+                <!-- Avatar -->
+                <div class="user-avatar col-3">
+                    <mat-spinner *ngIf="!isAvatarLoaded" diameter="40"></mat-spinner>
+
+                    <!-- Hiển thị ảnh khi đã load xong -->
+                    <img *ngIf="isAvatarLoaded" [src]="fullAvatarUrl" alt="User Avatar" class="avatar-img">
+                </div>
+
+                <!-- Thông tin -->
+                <div class="user-info col-9">
+                    <div class="user-row">
+                        <!-- Họ và Tài khoản -->
+                        <div class="user-item half">
+                            <mat-icon>person</mat-icon>
+                            <span class="label">Họ và tên:</span>
+                            <span class="value">
+                                {{ (user.lastName + ' ' + (user.middleName || '') + ' ' + user.firstName).trim() ||
+                                'Chưa cập nhật' }}
+                            </span>
+                        </div>
+                        <div class="user-item half">
+                            <mat-icon>badge</mat-icon>
+                            <span class="label">Tài khoản:</span>
+                            <span class="value">{{ user.userName || 'Chưa cập nhật' }}</span>
+                        </div>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="user-row">
+                        <!-- Số điện thoại và Giới tính -->
+                        <div class="user-item half">
+                            <mat-icon>call</mat-icon>
+                            <span class="label">Số điện thoại:</span>
+                            <span class="value">{{ user.phoneNumber || 'Chưa cập nhật' }}</span>
+                        </div>
+                        <div class="user-item half">
+                            <mat-icon>male</mat-icon>
+                            <span class="label">Giới tính:</span>
+                            <span class="value">
+                                {{ user.gender === '0' ? 'Nam' : user.gender === '1' ? 'Nữ': 'Chưa cập nhật' }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="user-row">
+                        <!-- Ngày sinh và Vị trí -->
+                        <div class="user-item half">
+                            <mat-icon>calendar_today</mat-icon>
+                            <span class="label">Ngày sinh:</span>
+                            <span class="value">{{ user.dateOfBirth ? (user.dateOfBirth | date:'dd/MM/yyyy') : 'Chưa cập
+                                nhật' }}</span>
+                        </div>
+                        <div class="user-item half">
+                            <mat-icon>work</mat-icon>
+                            <span class="label">Vị trí:</span>
+                            <span class="value">{{ user.roleName || 'Chưa cập nhật' }}</span>
+                        </div>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="user-row">
+                        <!-- Email và Địa chỉ -->
+                        <div class="user-item half">
+                            <mat-icon>email</mat-icon>
+                            <span class="label">Email:</span>
+                            <span class="value">{{ user.email || 'Chưa cập nhật' }}</span>
+                        </div>
+
+                    </div>
+                    <div class="line"></div>
+                    <div class="user-item half">
+                        <mat-icon>location_on</mat-icon>
+                        <span class="label">Địa chỉ:</span>
+                        <span class="value">{{ user.address || 'Chưa cập nhật' }}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Lịch làm việc -->
+        <div class="work-schedule">
+            <h3>
+                <mat-icon>schedule</mat-icon> Lịch làm việc
+            </h3>
+            <div class="schedule-details">
+                <div class="schedule-item">
+                    <mat-icon>watch_later</mat-icon>
+                    <span class="label">Ca làm việc:</span>
+                    <span class="value">Sáng (08:00 - 12:00)</span>
+                </div>
+                <div class="schedule-item">
+                    <mat-icon>event</mat-icon>
+                    <span class="label">Ngày nghỉ:</span>
+                    <span class="value">Chủ Nhật</span>
+                </div>
+                <div class="schedule-item">
+                    <mat-icon>today</mat-icon>
+                    <span class="label">Lịch hẹn tiếp theo:</span>
+                    <span class="value">10/02/2024 - Makeup cô dâu</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Đánh giá từ khách hàng -->
+        <div class="customer-reviews">
+            <h3>
+                <mat-icon>star_rate</mat-icon> Đánh giá từ khách hàng
+            </h3>
+            <div class="review">
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star_half</mat-icon>
+                <p>"Dịch vụ makeup chuyên nghiệp, tôi rất hài lòng!"</p>
+                <span class="reviewer">- Nguyễn Thị Mai</span>
+            </div>
+            <div class="review">
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <p>"Makeup rất tự nhiên, phù hợp với phong cách của tôi!"</p>
+                <span class="reviewer">- Trần Văn A</span>
+            </div>
+        </div>
+    </div>
+</div>

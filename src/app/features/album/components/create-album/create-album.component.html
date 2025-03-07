@@ -1,0 +1,48 @@
+<div class="container">
+    <h2 class="title">📸 Tạo Album</h2>
+
+    <form [formGroup]="albumForm" (ngSubmit)="onSubmit()">
+        <!-- Link Google Drive -->
+        <div class="form-group">
+            <label class="required">🔗 Link ảnh Google Drive</label>
+            <input type="text" formControlName="googleDriveLink" class="form-control" placeholder="Nhập link Google Drive">
+
+        </div>
+
+        <!--  Tên Album -->
+        <div class="form-group">
+            <label class="required">📂 Tên album</label>
+            <input type="text" formControlName="albumName" class="form-control" placeholder="Nhập tên album">
+        </div>
+
+        <!-- Chọn ảnh bìa album -->
+        <div class="form-group">
+            <label>🖼️ Chọn ảnh bìa album</label>
+            <div class="image-upload-box">
+                <!-- Input file ẩn -->
+                <input type="file" formControlName="coverImage" id="coverImage" (change)="onImageSelected($event)" style="display:none;">
+
+                <!-- Hiển thị icon upload khi chưa chọn ảnh -->
+                <div *ngIf="!imagePreviewUrl" class="upload-content">
+                    <label for="coverImage" class="upload-icon-label">
+                        <mat-icon>cloud_upload</mat-icon> Chọn ảnh bìa
+                    </label>
+                </div>
+
+                <!-- Hiển thị ảnh preview khi đã chọn ảnh -->
+                <div *ngIf="imagePreviewUrl" class="image-preview-container">
+                    <img [src]="imagePreviewUrl" class="image-preview">
+                    <!-- Icon chỉnh sửa để chọn lại ảnh -->
+                    <mat-icon class="edit-icon" (click)="editImage()">edit</mat-icon>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-create">Tạo mới</button>
+            <button type="button" class="btn btn-cancel" (click)="onCancel()">Hủy bỏ</button>
+        </div>
+
+    </form>
+</div>

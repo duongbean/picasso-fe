@@ -1,0 +1,675 @@
+/* Container chính */
+
+:host {
+    font-family: "LeagueSpartan-Light";
+    /* Tạo khoảng cách xung quanh nội dung */
+}
+
+
+/* Ẩn placeholder mặc định của input date */
+
+.custom-date-input::-webkit-datetime-edit {
+    color: transparent;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Khi người dùng nhập hoặc chọn ngày, text sẽ hiện lại */
+
+.custom-date-input:focus::-webkit-datetime-edit,
+.custom-date-input:valid::-webkit-datetime-edit {
+    color: black;
+}
+
+::ng-deep .mat-mdc-tab {
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    width: 28% !important;
+    max-width: 200px !important;
+    text-align: center !important;
+}
+
+
+/* Đảm bảo danh sách tab không kéo dài 100% */
+
+::ng-deep .mat-mdc-tab-list {
+    justify-content: center !important;
+    /* Căn giữa danh sách tab */
+    display: flex !important;
+    width: auto !important;
+}
+
+
+/* Ngăn tab-group mở rộng toàn bộ chiều rộng */
+
+::ng-deep .mat-mdc-tab-group {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin: 0 auto;
+}
+
+::ng-deep .status-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 60%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.work-board-container {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    font-family: "LeagueSpartan-Light";
+    min-height: 87vh;
+}
+
+.status-header.pending {
+    background-color: #FFECB3;
+}
+
+.status-header.received {
+    background-color: #E1BEE7;
+}
+
+.status-header.processing {
+    background-color: #BBDEFB;
+}
+
+.status-header.completed {
+    background-color: #C8E6C9;
+}
+
+.status-text.pending-text {
+    color: #FF8F00 !important;
+}
+
+
+/* Vàng đậm */
+
+.status-text.received-text {
+    color: #6A1B9A !important;
+}
+
+
+/* Tím đậm */
+
+.status-text.processing-text {
+    color: #0D47A1 !important;
+}
+
+
+/* Xanh dương đậm */
+
+.status-text.completed-text {
+    color: #1B5E20 !important;
+}
+
+
+/* Xanh lá đậm */
+
+
+/* Chỉ giới hạn tab "Bảng công việc" */
+
+.custom-tab .mat-tab-label {
+    width: 28% !important;
+    max-width: 200px;
+    text-align: center;
+    color: #9C1D1D;
+}
+
+
+/* Chia thành 4 cột */
+
+.status-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 100%;
+    align-items: stretch;
+    min-height: calc(100vh - 150px);
+}
+
+
+/* Cấu hình chung */
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 8px;
+    align-items: stretch;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.action-task {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+
+/* Tăng độ dày border */
+
+.custom-btn {
+    font-family: "LeagueSpartan-Bold";
+    font-size: 11px;
+    padding: 8px 16px;
+}
+
+
+/* Màu xanh lá cho nút "Chấp nhận" */
+
+.accept-btn {
+    border-color: #52ac56 !important;
+    /* Màu viền đậm hơn */
+}
+
+
+/* Màu đỏ cho nút "Từ chối" */
+
+.reject-btn {
+    border-color: #C62828 !important;
+}
+
+.location {
+    background: #9C1D1D;
+    padding: 10px;
+    font-size: 11px;
+    color: #FFF;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-family: "LeagueSpartan-Bold";
+    display: inline-block;
+}
+
+.location.khoang-1 {
+    background: #9C1D1D !important;
+}
+
+
+/* Khoang 2 - Màu xanh */
+
+.location.khoang-2 {
+    background: #1976D2 !important;
+}
+
+
+/* Class mặc định nếu không khớp */
+
+.location.khoang-default {
+    background: #808080 !important;
+    /* Màu xám */
+}
+
+
+/* Màu chấm trạng thái */
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.pending {
+    background-color: #FFC107;
+}
+
+.status-dot.received {
+    background-color: #8E24AA;
+}
+
+.status-dot.processing {
+    background-color: #1E88E5;
+}
+
+.status-dot.completed {
+    background-color: #43A047;
+}
+
+
+/* Thẻ card giữ nguyên */
+
+
+/* Chia thành 4 cột */
+
+.task-list {
+    display: flex;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.task-column {
+    padding: 16px;
+    border-radius: 8px;
+    margin: 10px;
+    flex: 1;
+}
+
+
+/* .task-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #c4c9cf;
+} */
+
+.task-column-pending {
+    background-color: #FFF3E0;
+    /* Đỏ nhạt */
+}
+
+.task-column-received {
+    background-color: #FFEBEE;
+    /* Xanh nhạt */
+}
+
+.task-column-processing {
+    background-color: #E3F2FD;
+    /* Cam nhạt */
+}
+
+.task-column-completed {
+    background-color: #E8F5E9;
+    /* Xanh lá nhạt */
+}
+
+
+/* Để tạo khoảng cách và bố cục đẹp hơn */
+
+.task-card.move {
+    transform: translateX(100%);
+    /* Dịch sang cột bên cạnh */
+}
+
+.client-icon,
+.category-icon {
+    color: #9C1D1D;
+    margin-right: 4px;
+    margin-bottom: -6px;
+}
+
+
+/* Thiết kế lại Task Card */
+
+.task-card {
+    padding-left: 16px;
+    border-radius: 8px;
+    /* Bo góc nhẹ */
+    background-color: #fff;
+    text-align: left;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Đổ bóng nhẹ */
+    border: 1px solid #e0e0e0;
+    /* Viền nhẹ */
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* Tựa đề của Card */
+
+.task-card mat-card-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* Thông tin phụ */
+
+.task-card mat-card-subtitle {
+    font-size: 14px;
+    /* Màu chữ xám */
+}
+
+
+/* Nội dung */
+
+.task-card mat-card-content {
+    font-size: 14px;
+    color: #424242;
+    padding-left: 0;
+}
+
+
+/* Danh mục của card */
+
+.task-card .category {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    /* Màu xanh ngọc */
+    background: #9C1D1D;
+    /* Nền xanh nhẹ */
+    padding: 5px 12px;
+    border-radius: 16px;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.badge {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #140a0a;
+}
+
+.table {
+    width: 100%;
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+
+/* Kiểu dáng cho trạng thái */
+
+
+/* Kiểu dáng cho nút trạng thái */
+
+.table {
+    margin-top: 2%;
+}
+
+
+/* Common styling for status button */
+
+.status-btn {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-size: 14px;
+    width: 140px;
+    justify-content: space-between;
+    border: none;
+}
+
+
+/* 🔹 Pending (Yellow) */
+
+.status-pending {
+    background-color: #FFECB3 !important;
+    /* Light Yellow */
+    color: #FF8F00 !important;
+    /* Dark Yellow */
+}
+
+.status-dot.status-pending {
+    background-color: #FFC107 !important;
+    /* Status dot matches header */
+}
+
+.dropdown-item.status-pending {
+    background-color: #FFECB3 !important;
+    color: #FF8F00 !important;
+}
+
+
+/* 🔹 Received (Purple) */
+
+.status-received {
+    background-color: #E1BEE7 !important;
+    /* Light Purple */
+    color: #6A1B9A !important;
+    /* Dark Purple */
+}
+
+.status-dot.status-received {
+    background-color: #8E24AA !important;
+}
+
+.dropdown-item.status-received {
+    background-color: #E1BEE7 !important;
+    color: #6A1B9A !important;
+}
+
+
+/* 🔹 Processing (Blue) */
+
+.status-processing {
+    background-color: #BBDEFB !important;
+    /* Light Blue */
+    color: #0D47A1 !important;
+    /* Dark Blue */
+}
+
+.status-dot.status-processing {
+    background-color: #1E88E5 !important;
+}
+
+.dropdown-item.status-processing {
+    background-color: #BBDEFB !important;
+    color: #0D47A1 !important;
+}
+
+
+/* 🔹 Completed (Green) */
+
+.status-completed {
+    background-color: #C8E6C9 !important;
+    /* Light Green */
+    color: #1B5E20 !important;
+    /* Dark Green */
+}
+
+.status-dot.status-completed {
+    background-color: #43A047 !important;
+}
+
+.dropdown-item.status-completed {
+    background-color: #C8E6C9 !important;
+    color: #1B5E20 !important;
+}
+
+
+/* 🔹 Dropdown Item Styling */
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    width: 140px;
+}
+
+.dropdown-item .status-dot {
+    margin-right: 8px;
+}
+
+
+/* 🔹 Status Header */
+
+.status-header.pending {
+    background-color: #FFECB3;
+}
+
+.status-header.received {
+    background-color: #E1BEE7;
+}
+
+.status-header.processing {
+    background-color: #BBDEFB;
+}
+
+.status-header.completed {
+    background-color: #C8E6C9;
+}
+
+.status-font {
+    font-size: 10px !important;
+}
+
+
+/* 🔹 Status Text Color */
+
+.status-text.pending-text {
+    color: #FF8F00 !important;
+}
+
+.status-text.received-text {
+    color: #6A1B9A !important;
+}
+
+.status-text.processing-text {
+    color: #0D47A1 !important;
+}
+
+.status-text.completed-text {
+    color: #1B5E20 !important;
+}
+
+
+/* 🔹 Status Dot (For Work Board) */
+
+.status-dot.pending {
+    background-color: #FFC107;
+}
+
+.status-dot.received {
+    background-color: #8E24AA;
+}
+
+.status-dot.processing {
+    background-color: #1E88E5;
+}
+
+.status-dot.completed {
+    background-color: #43A047;
+}
+
+
+/* Container chính */
+
+.date-picker-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 20px;
+    padding: 16px 0;
+}
+
+
+/* Bố cục date picker */
+
+.date-inputs {
+    display: flex;
+    gap: 20px;
+}
+
+
+/* Wrapper chứa input + label */
+
+.custom-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 180px;
+}
+
+
+/* Input tùy chỉnh */
+
+.custom-date-input {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+
+/* Khi focus hoặc có giá trị thì border nổi bật */
+
+.custom-date-input:focus,
+.custom-date-input:valid {
+    border-color: #1976D2;
+    box-shadow: 0px 0px 5px rgba(25, 118, 210, 0.5);
+    outline: none;
+}
+
+
+/* Placeholder động */
+
+.floating-label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #999;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+
+/* Khi input được focus hoặc có giá trị, label sẽ nhảy lên */
+
+.custom-date-input:focus+.floating-label,
+.custom-date-input:valid+.floating-label {
+    top: 8px;
+    font-size: 12px;
+    color: #1976D2;
+}
+
+.filter-button {
+    height: 40px;
+    background-color: #1976D2;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+}
+
+.filter-button i {
+    font-size: 16px;
+}
+
+.content-blur {
+    filter: blur(3px);
+    pointer-events: none;
+    /* Ngăn thao tác với nội dung khi đang loading */
+    user-select: none;
+    opacity: 0.6;
+}
+
+
+/* 🔵 Overlay che phủ toàn bộ nội dung */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}

@@ -1,0 +1,333 @@
+@font-face {
+    font-family: 'LeagueSpartan-Bold';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan-Light';
+    src: url('../../../../../assets/fonts/LeagueSpartan-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* Ngăn chặn tràn màn hình */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3f4f6, #dbeafe);
+}
+
+.login-container {
+    font-family: 'LeagueSpartan-Light', sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-logo {
+    width: 100%;
+    height: 100vh;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.bg-blue {
+    background-color: blue;
+}
+
+.bg-red-basic {
+    background: #930C0F;
+}
+
+.logo-text {
+    color: #930C0F;
+    text-align: center;
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
+    font-family: sans-serif;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+.logo-blur-left {
+    height: 250px;
+    border-radius: 300px;
+    background: #FEF9E1;
+    filter: blur(30px);
+}
+
+.logo-blur-middle {
+    height: 250px;
+    border-radius: 300px;
+    background: #FFFFFF4D;
+    filter: blur(75px);
+}
+
+.logo-blur-right {
+    height: 250px;
+    border-radius: 300px;
+    background: #A31D1D80;
+    filter: blur(75px);
+}
+
+.logo-container {
+    position: relative;
+}
+
+
+/* Định dạng icon ẩn/hiện mật khẩu */
+
+.toggle-password-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.toggle-password-icon:hover {
+    color: #000;
+}
+
+.logo-text {
+    position: absolute;
+    top: 30px;
+    right: 0;
+}
+
+.forgot-password-title {
+    color: #930C0F;
+    text-align: center;
+    font-size: 40px;
+    margin-top: -60px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+    z-index: 1;
+}
+
+.input-label {
+    color: #930C0F;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-weight: 100;
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+    margin: 5px;
+}
+
+.forgot-password-form {
+    padding: 1% 20%;
+}
+
+.forgot-password-form input {
+    width: 100%;
+    margin-bottom: -10px;
+}
+
+.btn-submit {
+    margin-top: 20px;
+    color: #FFF;
+    border-radius: 10px;
+    background: #930C0F;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    font-family: 'LeagueSpartan-Bold', sans-serif;
+}
+
+.btn-submit:hover {
+    background-color: #6D2323;
+    color: #FEF9E1;
+}
+
+.btn-submit-blur {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: rgba(245, 56, 56, 0.35);
+    filter: blur(15px);
+}
+
+.back-icon-span {
+    color: #A31D1D;
+    display: flex;
+    gap: 15px;
+    margin-left: 5%;
+    position: absolute;
+    bottom: 30px;
+}
+
+.back-icon-span :hover {
+    cursor: pointer;
+    color: #6D2323;
+}
+
+.back-icon-span mat-icon {
+    font-size: 40px;
+    margin: auto 0;
+    width: 40px;
+    height: 40px;
+}
+
+.back-btn {
+    font-size: 24px;
+    margin: auto 0;
+}
+
+.email-input {
+    padding: 10px;
+    padding-left: 40px;
+    font-weight: 100;
+    font-family: 'LeagueSpartan-Light', sans-serif;
+    border: solid 1px #6D232399;
+}
+
+.email-input::placeholder {
+    color: lightgray;
+    font-weight: 100;
+    font-family: 'LeagueSpartan-Light', sans-serif;
+    text-transform: none;
+}
+
+.email-input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.email-input-icon {
+    position: absolute;
+    top: 23%;
+    left: 10px;
+    color: #bc131380;
+}
+
+.form-control {
+    padding-left: 40px;
+    /* Chừa khoảng trống bên trái cho icon */
+}
+
+.error-message {
+    font-weight: 100;
+    font-family: 'LeagueSpartan-Light', sans-serif;
+    color: red;
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 4px;
+}
+
+
+/* Tùy chỉnh nền và font của popup */
+
+.loading-overlay {
+    position: fixed;
+    /* Overlay covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    z-index: 1050;
+    /* Ensure it appears above all other content */
+}
+
+
+/* CAPTCHA */
+
+
+/* Cải thiện giao diện hộp CAPTCHA */
+
+.captcha-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 12px;
+    background: white;
+    border: 2px solid transparent;
+    /* Tạo hiệu ứng viền gradient */
+    background-image: linear-gradient(white, white), linear-gradient(to right, #ff416c, #ff4b2b);
+    /* Gradient viền */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    /* Hiệu ứng đổ bóng nhẹ */
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Khi input trong CAPTCHA được focus, viền nổi bật hơn */
+
+.captcha-box:focus-within {
+    border-color: #ff416c;
+}
+
+
+/* Mã CAPTCHA */
+
+.captcha-code {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+    letter-spacing: 3px;
+}
+
+
+/* Input nhập CAPTCHA */
+
+.captcha-box input {
+    flex-grow: 1;
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    background: #f8f8f8;
+    transition: 0.3s;
+}
+
+
+/* Khi người dùng nhập, đổi màu nền */
+
+.captcha-box input:focus {
+    background: white;
+    box-shadow: 0px 0px 8px rgba(255, 65, 108, 0.3);
+}
+
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+    }
+    .login-form-container,
+    .image-container {
+        width: 100%;
+    }
+    .img-logo {
+        border-radius: 0;
+    }
+}

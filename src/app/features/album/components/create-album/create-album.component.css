@@ -1,0 +1,244 @@
+/* 📌 Container form */
+
+.container {
+    max-width: 500px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* 📌 Tiêu đề */
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+
+
+/* 📌 Form group */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.required::after {
+    content: " *";
+    color: red;
+}
+
+
+/* 📌 Input field */
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* 🔥 Hiệu ứng khi focus vào input */
+
+.form-control:focus {
+    border-color: #d9534f;
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
+}
+
+
+/* 📌 Image upload box */
+
+.image-upload-box {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    padding: 70px;
+    color: #777;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    /* Set height for the upload box */
+    width: 100%;
+}
+
+.upload-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.upload-icon-label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.upload-icon-label mat-icon {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.image-preview-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the entire box without distortion */
+    border-radius: 8px;
+}
+
+.edit-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+/* Đảm bảo Swal luôn hiển thị trên cùng */
+
+
+/* Đảm bảo Swal luôn ở trên cùng */
+
+.swal2-popup {
+    z-index: 999999 !important;
+    /* Đảm bảo Swal luôn hiển thị trên cùng */
+}
+
+
+/* Nếu cần, bạn có thể điều chỉnh z-index của dialog */
+
+.mat-dialog-container {
+    z-index: 9999 !important;
+    /* Đảm bảo rằng dialog không che mất Swal */
+}
+
+.edit-icon:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+
+/* 📌 Switch button */
+
+.switch-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #28a745;
+}
+
+input:checked+.slider:before {
+    transform: translateX(18px);
+}
+
+
+/* 📌 Nút bấm */
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    width: 50%;
+    margin: 20px auto;
+    /* Canh giữa và tạo khoảng cách trên dưới */
+}
+
+.btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    /* Tăng khoảng cách bên trái phải */
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Tạo hiệu ứng nổi nhẹ */
+}
+
+.btn-create {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.btn-create:hover {
+    background-color: #c9302c;
+}
+
+.btn-cancel {
+    background-color: #fff;
+    color: #c9302c;
+    border: 1px solid #c9302c;
+    /* Sử dụng cùng tông màu với chữ */
+}
+
+.btn-cancel:hover {
+    background-color: #f7f7f7;
+    /* Hiệu ứng hover nhẹ nhàng */
+}

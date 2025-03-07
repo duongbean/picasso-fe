@@ -1,0 +1,48 @@
+.create-customer-form {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.input-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-family: 'LeagueSpartan-Regular';
+}
+
+.input-field {
+    min-height: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.input-field::placeholder {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 4px 0px;
+    margin: 0 24px;
+    color: var(--primary-color) !important;
+    font-weight: bolder !important;
+    font-size: 30px !important;
+}
+
+.gender-input-field,
+.address-input-field {
+    width: 100% !important;
+    max-height: 65px !important;
+}
+
+.text-error {
+    color: var(--text-error-color);
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.address-element-container {
+    width: 0%;
+    flex: 1;
+}
