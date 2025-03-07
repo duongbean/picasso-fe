@@ -7,3 +7,4 @@ route = ""
 zone_id = ""
 main = "src/main.ts"
 
+compatibility_date = "2025-03-07"
